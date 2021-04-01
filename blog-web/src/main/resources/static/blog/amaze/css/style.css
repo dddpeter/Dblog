@@ -78,8 +78,8 @@ h2.sectionHead {
     clear: both;
     font: bold 20px/12px 'verdana', sans-serif;
     margin: 60px -60px;
-    border-left: 52px solid #444;
-    color: #444;
+    border-left: 52px solid #168f48;
+    color: #168f48;
     padding: 1px 0 0 8px;
     letter-spacing: -2px;
     text-transform: uppercase;
@@ -179,7 +179,7 @@ h2#contact:before {
 #bio p a:hover {
     text-decoration: none;
     color: #fff;
-    background: #222;
+    background: #168f48;
 }
 
 #bio a.selectedWork {
@@ -350,7 +350,7 @@ ul#skills.ready {
 ul#skills li {
     position: relative;
     right: 100%;
-    background-color: #444;
+    background-color: #1aaa55;
     color: #fff;
     font: bold 9px/20px sans-serif;
     letter-spacing: 1px;
@@ -368,7 +368,7 @@ ul#skills li:after {
     line-height: 26px;
     width: 50px;
     text-align: right;
-    color: #aaa;
+    color: #eee;
 }
 
 ul#skills li.s100:after {
@@ -428,7 +428,7 @@ ul#skills li span {
 }
 
 ul#skills li:hover {
-    background: #222;
+    background: #168f48;
 }
 
 li.s100 {
@@ -730,3 +730,4 @@ body.respond #copyright {
 body.respond #messageSent {
     margin-top: 20px;
 }
+

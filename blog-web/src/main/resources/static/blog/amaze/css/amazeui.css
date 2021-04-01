@@ -11949,7 +11949,7 @@ tbody.am-collapse.am-in {
 }
 .am-list .am-list-item-desced a,
 .am-list .am-list-item-thumbed a {
-  padding-right: 0;
+ /* padding-right: 0;*/
 }
 .am-list-news .am-list-item-hd {
   margin: 0;

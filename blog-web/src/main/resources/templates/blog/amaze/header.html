@@ -24,14 +24,13 @@
     <script th:src="@{/blog/plugins/jquery/jquery.min.js}"></script>
     <script th:src="@{/blog/amaze/js/amazeui.min.js}"></script>
 </head>
-<header th:fragment="header-fragment" class="am-topbar am-topbar-inverse am-topbar-fixed-top"
-        style="background-color: black">
+<header th:fragment="header-fragment" class="am-topbar am-topbar-inverse am-topbar-fixed-top">
     <div class="amz-container">
         <h1 class="am-topbar-brand">
-            <a class="navbar-brand" href="/" th:text="${configurations.get('websiteName')}">敲代码的长腿毛欧巴的博客</a>
-            <a href="/">
+            <a class="navbar-brand" href="/" th:text="${configurations.get('websiteName')}"></a>
+          <!--  <a href="/">
                 <img th:src="@{/blog/amaze/images/website.png}" style="width: 60%;" th:alt="敲代码的长腿毛欧巴Logo">
-            </a>
+            </a>-->
         </h1>
         <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
                 data-am-collapse="{target: '#doc-topbar-collapse-5'}">
@@ -67,16 +66,9 @@
                     </ul>
                 </li>
                 <li>
-                    <a th:href="@{/link}">
-                        友链
-                    </a>
-                </li>
-                <li>
                     <a th:href="@{/about}">关于</a>
                 </li>
-                <li>
-                    <a href="https://github.com/renjiahua945/Lumos" target="_blank">GitHub</a>
-                </li>
+
             </ul>
         </div>
     </div>

@@ -6,7 +6,7 @@
 <link rel="stylesheet" th:href="@{/admin/plugins/editormd/css/editormd.preview.css}"/>
 <body>
 <div th:replace="blog/amaze/header::header-fragment"></div>
-<div class="container" style="position:relative;margin-top: 10rem;">
+<div class="container" style="position:relative;margin-top: 2rem;">
     <article class="am-article">
         <div class="am-article-hd" style="text-align: center">
             <h1 class="am-article-title" th:text="${blogDetailVO.blogTitle}">永远的蝴蝶</h1>
@@ -19,12 +19,11 @@
             </p>
             <div>
                 <th:block th:each="tag : ${blogDetailVO.blogTags}">
-                            <span>
-                                <a class="am-badge am-badge-success am-round am-text-default"
+
+                                <a class="am-badge am-badge-success"
                                    th:href="@{'/tag/' + ${tag}}">
                                     <th:block th:text="${tag}"></th:block>
                                 </a>
-                            </span>
                 </th:block>
             </div>
         </div>
@@ -164,9 +163,7 @@
 <script th:src="@{/admin/plugins/editormd/lib/flowchart.min.js}"></script>
 <script th:src="@{/admin/plugins/editormd/lib/jquery.flowchart.min.js}"></script>
 
-<!-- 背景动画 -->
-<script type="text/javascript" color="0,0,205" opacity='0.7' zIndex="-2" count="199"
-        src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+
 <script type="text/javascript">
     $(function () {
         var testEditormdView;

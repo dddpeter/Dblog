@@ -15,10 +15,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
         , "club.javafan.blog.web.aop"
         , "club.javafan.blog.web.filter"
         , "club.javafan.blog.configs"
-        , "club.javafan.blog.common.util"
-        , "club.javafan.blog.common.mail.impl"
-        , "club.javafan.blog.common.threadpool"
-        , "club.javafan.blog.common.qquserinfo"
+        , "club.javafan.blog.common"
         , "club.javafan.blog.worker"
 })
 

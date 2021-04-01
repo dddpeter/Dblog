@@ -60,6 +60,8 @@ public class MyBlogController {
     private Cache<String,Object> guavaCache;
     @Autowired
     private RedisUtil redisUtil;
+    @Resource
+    AipContentCensorBuilder aipContentCensorBuilder;
     private Long EXPIRE_TIME = 60 * 60 * 24L;
     /**
      * 首页
@@ -286,32 +288,6 @@ public class MyBlogController {
     }
 
 
-    /**
-     * 友情链接页
-     *
-     * @return
-     */
-    @GetMapping({"/link"})
-    public ModelAndView link() throws Exception {
-        ModelAndView modelAndView = new ModelAndView("blog/amaze/link");
-        modelAndView.addObject("pageName", "友情链接");
-        Map<Byte, List<BlogLink>> linkMap = linkService.getLinksForLinkPage();
-        if (linkMap != null) {
-            //判断友链类别并封装数据 0-友链 1-推荐 2-个人网站
-            if (linkMap.containsKey((byte) 0)) {
-                modelAndView.addObject("favoriteLinks", linkMap.get((byte) 0));
-            }
-            if (linkMap.containsKey((byte) 1)) {
-                modelAndView.addObject("recommendLinks", linkMap.get((byte) 1));
-            }
-            if (linkMap.containsKey((byte) 2)) {
-                modelAndView.addObject("personalLinks", linkMap.get((byte) 2));
-            }
-        }
-        modelAndView.addObject("categories", categoryService.getAllCategories());
-        modelAndView.addObject("configurations", configService.getAllConfigs());
-        return modelAndView;
-    }
 
     /**
      * 评论操作
@@ -372,7 +348,7 @@ public class MyBlogController {
         }
         comment.setCommentBody(commentBody);
         comment.setCommentCreateTime(new Date());
-        AipContentCensorBuilder.SensorResult results = AipContentCensorBuilder.judgeText(comment.toString());
+        AipContentCensorBuilder.SensorResult results = aipContentCensorBuilder.judgeText(comment.toString());
         if (!results.getCode().equals(NumberUtils.INTEGER_ZERO)) {
             return ResponseResult.failResult("评论非法！").setData(false);
         }

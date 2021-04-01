@@ -4,8 +4,10 @@ import com.baidu.aip.contentcensor.AipContentCensor;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.Objects;
 
 import static org.apache.commons.lang3.math.NumberUtils.INTEGER_ONE;
@@ -17,21 +19,11 @@ import static org.apache.commons.lang3.math.NumberUtils.INTEGER_ZERO;
  * @author 敲代码的长腿毛欧巴
  * @createDate 2020/2/2
  */
-@Component
+@Component(value = "aipContentCensorBuilder")
 public class AipContentCensorBuilder {
     private static final Logger logger = LoggerFactory.getLogger(AipContentCensorBuilder.class);
-
-
-    private static AipContentCensor client = new AipContentCensor("18131202", "T1TAQcoANVtGgibseCATCblY"
-            , "HmgAhWXV3Ao1GRHtBsqKI4PAswlQzMim");
-
-    public static AipContentCensor getInstance() {
-        return client;
-    }
-
-    private AipContentCensorBuilder() {
-
-    }
+    @Resource
+    AipContentCensor baiduAipContentCensor;
 
     /**
      *  敏感词结果
@@ -78,15 +70,18 @@ public class AipContentCensorBuilder {
      * @param text
      * @return
      */
-    public static SensorResult judgeText(String text){
-        JSONObject jsonObject = client.antiSpam(text, null);
+    public  SensorResult judgeText(String text){
+        JSONObject jsonObject = baiduAipContentCensor.textCensorUserDefined(text);
         logger.info("AipContentCensorBuilder text: {},info: {}",text,jsonObject);
         //0表示非违禁，1表示违禁，2表示建议人工复审
-        JSONObject result = jsonObject.getJSONObject("result");
-        if (Objects.isNull(jsonObject) || Objects.isNull(result) || result.getInt("spam") == INTEGER_ZERO){
-            return new SensorResult().successResult("需要人工审核");
+        Integer conclusionType = jsonObject.getInt("conclusionType");
+        if (Objects.isNull(jsonObject) || Objects.isNull(conclusionType) || conclusionType.intValue() == INTEGER_ZERO){
+            return new SensorResult().failResult("需要人工审核");
         }
-        return new SensorResult().failResult("失败！");
+        else{
+            return new SensorResult().successResult("合规！");
+        }
+
 
     }
 }

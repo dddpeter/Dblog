@@ -24,8 +24,8 @@ spring:
     #配置多数据源 下面是我本地的数据url
     slave:
       jdbc-url: jdbc:mysql://localhost:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC
-      username: root
-      password: ren123
+      username: app
+      password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.zaxxer.hikari.HikariDataSource
       hikari:
@@ -38,8 +38,8 @@ spring:
         connection-test-query: SELECT 1
     master:
       jdbc-url: jdbc:mysql://localhost:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC
-      username: root
-      password: ren123
+      username: app
+      password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.zaxxer.hikari.HikariDataSource
       hikari:
@@ -59,7 +59,7 @@ spring:
     # Redis服务器连接端口
     port: 6379
     # Redis服务器连接密码（默认为空）如果没有配置密码就不要写这个属性了
-    password: ren123
+    # password: ren123
     #连接池
     lettuce:
       pool:
@@ -80,13 +80,13 @@ spring:
   mail:
     default-encoding: utf-8
     #收件人
-    to: xx@qq.com
+    to: dddpeter@126.com
     #抄送列表 ,分隔
-    cc: xx@qq.com,xx@qq.com
+    cc: dddpeter@aliyun.com
     subject: 博客日报 #博客主题
-    host: smtp.exmail.qq.com
-    username: xx@javafan.club
-    password: dadasa #邮箱授权码  需要在邮箱中申请
+    host: smtp.126.com
+    username: dddpeter@126.com
+    password: VDJCABTVPBLPVKZM #邮箱授权码  需要在邮箱中申请
     properties:
       mail.smtp.auth: true
       mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
@@ -143,4 +143,8 @@ guava:
 logging:
   level:
     #设置项目的日志打印级别 map类型 root为全路径  后面为级别
-    root: error
+    root: info
+baidu:
+  appId: 23916718
+  appKey: GeKMqkqPdxpfnktWML8cIQOA
+  appSecret: TTWXOxGSaUW2Griq769gVGK4fbxGlUsS

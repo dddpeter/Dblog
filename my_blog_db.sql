@@ -40,7 +40,8 @@ CREATE TABLE `tb_admin_user`
 -- ----------------------------
 INSERT INTO `tb_admin_user`
 VALUES (1, 'renjiahua', '027d3922dd6fa2060d6a9c1bbf69e122', '不会敲代码的小白', 0);
-
+INSERT INTO `tb_admin_user`
+VALUES (2, 'admin', md5('admin') , '李进德', 0);
 -- ----------------------------
 -- Table structure for tb_blog
 -- ----------------------------

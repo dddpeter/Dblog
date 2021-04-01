@@ -22,7 +22,7 @@
     <artifactId>blog</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>blog</name>
-    <description>created by 敲代码的长腿毛欧巴</description>
+    <description>created by 敲代码的长腿毛欧巴,forked by dddpeter</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -32,4 +32,37 @@
             <!--<artifactId>snakeyaml</artifactId>-->
         <!--</dependency>-->
     <!--</dependencies>-->
+    <pluginRepositories>
+
+        <pluginRepository>
+            <id>aliyun</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>aliyun-spring-plugins</id>
+            <url>https://maven.aliyun.com/nexus/content/repositories/spring-plugin</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <repositories>
+        <repository>
+            <id>aliyun</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>saliyun-pring</id>
+            <url>https://maven.aliyun.com/repository/spring</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
