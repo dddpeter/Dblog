@@ -15,7 +15,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.4.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>club.javafan</groupId>
@@ -33,7 +33,11 @@
         <!--</dependency>-->
     <!--</dependencies>-->
     <pluginRepositories>
-
+        <pluginRepository>
+            <id>spring-releases</id>
+            <name>Spring Releases</name>
+            <url>https://repo.spring.io/release</url>
+        </pluginRepository>
         <pluginRepository>
             <id>aliyun</id>
             <url>https://maven.aliyun.com/repository/public</url>
@@ -42,8 +46,14 @@
             <id>aliyun-spring-plugins</id>
             <url>https://maven.aliyun.com/nexus/content/repositories/spring-plugin</url>
         </pluginRepository>
+
     </pluginRepositories>
     <repositories>
+        <repository>
+            <id>spring-releases</id>
+            <name>Spring Releases</name>
+            <url>https://repo.spring.io/release</url>
+        </repository>
         <repository>
             <id>aliyun</id>
             <url>https://maven.aliyun.com/repository/public</url>
@@ -64,5 +74,6 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+
     </repositories>
 </project>
