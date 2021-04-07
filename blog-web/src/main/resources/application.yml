@@ -6,6 +6,8 @@ blog:
   run:
     date: 2020-01-01
 spring:
+  profiles:
+    active: ${ENV:}
   main:
     allow-bean-definition-overriding: true
   servlet:
