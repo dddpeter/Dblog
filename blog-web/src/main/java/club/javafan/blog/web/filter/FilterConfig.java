@@ -1,5 +1,6 @@
 package club.javafan.blog.web.filter;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
+@Slf4j
 public class FilterConfig implements WebMvcConfigurer {
     @Value("${file.file-path}")
     private String FILE_PATH;
@@ -26,6 +28,7 @@ public class FilterConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // 路径映射
         String path = System.getProperty("user.dir").replaceAll("\\\\", "/") + FILE_PATH;
+        log.warn("static served on: {}",path);
         registry.addResourceHandler("/upload/**").addResourceLocations("file:" + path);
     }
 

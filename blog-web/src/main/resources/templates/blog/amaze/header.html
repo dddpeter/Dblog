@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head-fragment">
     <meta charset="utf-8">
-    <title th:text="|${configurations.get('websiteName')} - ${pageName}|">主页</title>
+    <title th:text="|${configurations.get('websiteName')}|">主页</title>
     <meta name="description" th:content="${configurations.get('websiteDescription')}">
     <meta name="keywords" content="Spring Boot Java 轻量级 博客 好看 Amaze UI MySQL 敲代码的长腿欧巴">
     <link rel="shortcut icon" th:href="@{${configurations.get('websiteIcon')}}"/>
@@ -20,7 +20,7 @@
     <link rel="stylesheet" th:href="@{/blog/amaze/css/base.css}">
     <link rel="stylesheet" th:href="@{/blog/amaze/css/amazeui.css}">
     <link rel="stylesheet" th:href="@{/blog/amaze/css/app.css}">
-    <link href="//cdn.bootcss.com/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/blog/amaze/css/all.min.css}">
     <script th:src="@{/blog/plugins/jquery/jquery.min.js}"></script>
     <script th:src="@{/blog/amaze/js/amazeui.min.js}"></script>
 </head>
@@ -29,7 +29,7 @@
         <h1 class="am-topbar-brand">
             <a class="navbar-brand" href="/" th:text="${configurations.get('websiteName')}"></a>
           <!--  <a href="/">
-                <img th:src="@{/blog/amaze/images/website.png}" style="width: 60%;" th:alt="敲代码的长腿毛欧巴Logo">
+                <img th:src="@{/blog/amaze/images/website.png}" style="width: 60%;" th:alt="dddpeterLogo">
             </a>-->
         </h1>
         <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"

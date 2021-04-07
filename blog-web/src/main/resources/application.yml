@@ -25,9 +25,9 @@ spring:
   datasource:
     #配置多数据源 下面是我本地的数据url
     slave:
-      jdbc-url: jdbc:mysql://82.156.204.156:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC
-      username: dddpeter
-      password: hqins@66
+      jdbc-url: jdbc:mysql://localhost:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC
+      username: app
+      password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.zaxxer.hikari.HikariDataSource
       hikari:
@@ -39,9 +39,9 @@ spring:
         maximum-pool-size: 15
         connection-test-query: SELECT 1
     master:
-      jdbc-url: jdbc:mysql://82.156.204.156:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC
-      username: dddpeter
-      password: hqins@66
+      jdbc-url: jdbc:mysql://localhost:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC
+      username: app
+      password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.zaxxer.hikari.HikariDataSource
       hikari:
@@ -57,11 +57,11 @@ spring:
     # Redis数据库索引（默认为0）
     database: 0
     # Redis服务器地址
-    host: 82.156.204.156
+    host: 127.0.0.1
     # Redis服务器连接端口
     port: 6379
     # Redis服务器连接密码（默认为空）如果没有配置密码就不要写这个属性了
-    password: hqins@66
+   # password: hqins@66
     #连接池
     lettuce:
       pool:
@@ -119,14 +119,15 @@ server:
   error:
     path: error/error_404
   #上线需要改为线上环境的证书和密码
-  ssl:
-    key-store: classpath:jks/blog.javafan.club.jks
-    key-store-password: ren123
-    key-store-type: JKS
-    key-alias: was
-  port: 443
-http:
   port: 80
+#  ssl:
+#    key-store: classpath:jks/blog.javafan.club.jks
+#    key-store-password: ren123
+#    key-store-type: JKS
+#    key-alias: was
+#  port: 443
+#http:
+#  port: 80
 #设置线程池
 thread:
   core-pool-size: 20

@@ -132,7 +132,7 @@ public class BlogController {
             //创建文件
             File destFile = new File(newFileName);
             String fileUrl = BlogUtils.getHost(new URI(request.getRequestURL() + ""))
-                    + "/upload/img/" + newFileName;
+                    + "/upload/" + newFileName;
             file.transferTo(destFile);
             request.setCharacterEncoding("utf-8");
             response.setHeader("Content-Type", "text/html");

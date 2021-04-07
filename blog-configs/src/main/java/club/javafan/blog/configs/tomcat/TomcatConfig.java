@@ -17,14 +17,14 @@ import org.springframework.context.annotation.Bean;
  */
 @SpringBootConfiguration
 public class TomcatConfig {
-    /**
+  /*  *//**
      * 启动的http port
-     */
+     *//*
     @Value("${http.port}")
     Integer httpPort;
-    /**
+    *//**
      * 服务器正常工作的port
-     */
+     *//*
     @Value("${server.port}")
     Integer httpsPort;
 
@@ -52,10 +52,10 @@ public class TomcatConfig {
         connector.setScheme("http");
         connector.setPort(httpPort);
         connector.setSecure(false);
-        connector.setRedirectPort(httpsPort);
+      *//*  connector.setRedirectPort(httpsPort);*//*
         tomcat.addAdditionalTomcatConnectors(connector);
         return tomcat;
-    }
+    }*/
 
 
 }
