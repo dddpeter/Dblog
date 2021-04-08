@@ -75,7 +75,7 @@ function checkDoneComments() {
         icon: "warning",
         buttons: true,
         dangerMode: true,
-    }).then((flag) => {
+    }).then(function(flag){
             if (flag) {
                 $.ajax({
                     type: "POST",
@@ -114,7 +114,7 @@ function deleteComments() {
         icon: "warning",
         buttons: true,
         dangerMode: true,
-    }).then((flag) => {
+    }).then(function(flag){
             if (flag) {
                 $.ajax({
                     type: "POST",

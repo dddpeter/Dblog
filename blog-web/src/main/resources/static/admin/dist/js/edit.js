@@ -30,7 +30,8 @@ $(function () {
         if (clipboardData) {
             var items = clipboardData.items;
             if (items && items.length > 0) {
-                for (var item of items) {
+                for (var k in items) {
+                    var item = items[k];
                     if (item.type.startsWith("image/")) {
                         var file = item.getAsFile();
                         if (!file) {
@@ -43,7 +44,7 @@ $(function () {
                         xhr.open("POST", "/admin/upload/file");
                         xhr.onreadystatechange = function () {
                             if (xhr.readyState == 4 && xhr.status == 200) {
-                                var json=JSON.parse(xhr.responseText);
+                                var json = JSON.parse(xhr.responseText);
                                 if (json.code == 0) {
                                     blogEditor.insertValue("![](" + json.data + ")");
                                 } else {
@@ -195,8 +196,7 @@ $('#saveButton').click(function () {
                 }).then(function () {
                     window.location.href = "/admin/blogs";
                 })
-            }
-            else {
+            } else {
                 $('#articleModal').modal('hide');
                 swal(result.desc, {
                     icon: "error",

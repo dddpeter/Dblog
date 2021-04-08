@@ -3046,7 +3046,7 @@
    right: 0;
    height: 1px;
    width: 70px;
-   background: #2f2f2d;
+   background:  #168f48;
    content: '';
  }
  
@@ -3533,10 +3533,11 @@
  }
  
  .container {
-   padding-right: 15px;
-   padding-left: 15px;
+   padding:15px;
+     margin-top: 0!important;
    margin-right: auto;
    margin-left: auto;
+     background-color: #FFF;
  }
  
  @media (min-width: 768px) {
@@ -4528,9 +4529,15 @@ aside.comments .comment .body {
 
 aside.comments,
 aside.create-comment {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+    padding-top: 15px;
 }
-
+aside.create-comment {
+    padding-bottom: 15px;
+    background-color:#FFFFE0 ;
+    border: 1px dashed #C1C1C1;
+    border-radius: 8px;
+}
 aside.comments hr,
 aside.create-comment hr {
     margin-left: auto;
@@ -4557,7 +4564,8 @@ aside.comments h2,
 aside.create-comment h2 {
     text-align: center;
     font-weight: normal;
-    margin-bottom: 40px;
+    color: #168f48;
+    margin-bottom: 10px;
 }
 
 aside.comments h2 i,

@@ -181,7 +181,7 @@
     </div>
 
 </div>
-<div style="text-align: center">
+<div style="text-align: center;position: fixed; bottom: 20px;right: 8px">
     <button class="am-btn am-btn-success" onclick="exportReportTemplet()">
         <i class="am-icon-cloud-download"></i>下载该简历
     </button>
@@ -199,7 +199,10 @@
 <!--生成PDF-->
 <script th:src="@{/blog/amaze/js/generatePDF.js}"></script>
 <!-- 背景动画 -->
+<!--
 <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+-->
+<script th:src="@{/blog/amaze/js/html2canvas.min.js}"></script>
 <script th:src="@{/blog/amaze/js/jspdf.min.js}"></script>
 
 

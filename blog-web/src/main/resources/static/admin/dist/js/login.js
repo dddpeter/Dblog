@@ -1,4 +1,4 @@
-window.addEventListener("load", () => {
+window.addEventListener("load", function() {
     "use strict";
 
     if (!CSS.supports("clip-path", "circle(120px at center)") && !CSS.supports("-webkit-clip-path", "circle(120px at center)")) {
@@ -19,9 +19,10 @@ window.addEventListener("load", () => {
         localStorage.setItem("modelId", modelId);
         if (modelTexturesId === undefined) modelTexturesId = 0;
         localStorage.setItem("modelTexturesId", modelTexturesId);
-        loadlive2d("live2d", `${apiPath}/get/?id=${modelId}-${modelTexturesId}`, null);
-        console.log("live2d", `模型 ${modelId}-${modelTexturesId} 加载完成`);
-        setTimeout(() => {
+        var path = apiPath + '/get/?id=' + modelId + '-' + modelTexturesId
+        loadlive2d("live2d", path/*`${apiPath}/get/?id=${modelId}-${modelTexturesId}`*/, null);
+        console.log("live2d", '模型'+ modelId + '-' + modelTexturesId +'加载完成');
+        setTimeout(function() {
             coverPosition("80%");
             state = 2;
         }, 2000);
@@ -30,11 +31,11 @@ window.addEventListener("load", () => {
     function loadRandModel() {
         var modelId = localStorage.getItem("modelId"),
             modelTexturesId = localStorage.getItem("modelTexturesId");
-        fetch(`${apiPath}/rand_textures/?id=${modelId}-${modelTexturesId}`)
-            .then(response => response.json())
-            .then(result => {
+        fetch('apiPath'+'/rand_textures/?id='+ modelId + '-' + modelTexturesId)
+            .then(function(response) { return response.json()})
+            .then(function(result){
                 loadModel(modelId, result.textures.id);
-                setTimeout(() => {
+                setTimeout(function() {
                     state = 2;
                     coverPosition("80%");
                     document.getElementById("refresh").setAttribute("href", "javascript:refresh()");
@@ -44,9 +45,9 @@ window.addEventListener("load", () => {
 
     function loadOtherModel() {
         var modelId = localStorage.getItem("modelId");
-        fetch(`${apiPath}/switch/?id=${modelId}`)
-            .then(response => response.json())
-            .then(result => {
+        fetch(apiPath+'/switch/?id='+ modelId)
+            .then(function(response) { return response.json()})
+            .then(function(result){
                 loadModel(result.model.id);
             });
     }
@@ -57,8 +58,8 @@ window.addEventListener("load", () => {
 
     window.info = function () {
         fetch("https://v1.hitokoto.cn")
-            .then(response => response.json())
-            .then(result => {
+            .then(function(response) { return response.json()})
+            .then(function(result){
                 alert("「" + result.hitokoto + "」——" + result.from);
             });
     }
@@ -70,7 +71,7 @@ window.addEventListener("load", () => {
         setTimeout(loadRandModel, 1000);
     }
 
-    document.getElementById("handle").addEventListener("click", () => {
+    document.getElementById("handle").addEventListener("click", function() {
         if (state === 1) {
             state = 2;
             coverPosition("80%");
@@ -80,13 +81,13 @@ window.addEventListener("load", () => {
         }
     });
 
-    document.querySelector("input[type=password]").addEventListener("focus", () => {
+    document.querySelector("input[type=password]").addEventListener("focus", function() {
         if (state === 2) {
             state = 1;
             coverPosition("20%");
         }
     });
-    document.querySelector("input[type=password]").addEventListener("blur", () => {
+    document.querySelector("input[type=password]").addEventListener("blur", function() {
         if (state === 1) {
             state = 2;
             coverPosition("80%");

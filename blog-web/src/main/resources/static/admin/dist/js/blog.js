@@ -112,7 +112,7 @@ function deleteBlog() {
         icon: "warning",
         buttons: true,
         dangerMode: true,
-    }).then((flag) => {
+    }).then(function(flag){
         if(flag) {
             $.ajax({
                 type: "POST",
