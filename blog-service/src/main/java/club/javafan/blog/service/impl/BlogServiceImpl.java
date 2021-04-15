@@ -13,6 +13,7 @@ import club.javafan.blog.domain.vo.BlogListVO;
 import club.javafan.blog.domain.vo.SimpleBlogListVO;
 import club.javafan.blog.repository.*;
 import club.javafan.blog.service.BlogService;
+import com.google.common.cache.Cache;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.BeanUtils;
@@ -22,10 +23,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static club.javafan.blog.common.constant.CacheConstant.BLOG_DETAIL;
 import static club.javafan.blog.common.constant.RedisKeyConstant.BLOG_VIEW_ZSET;
 import static org.apache.commons.collections4.CollectionUtils.isEmpty;
 import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
@@ -52,6 +55,10 @@ public class BlogServiceImpl implements BlogService {
     private BlogCommentMapper blogCommentMapper;
     @Autowired
     private RedisUtil redisUtil;
+
+    @Resource
+    private Cache<String,Object> guavaCache;
+
     @Transactional(rollbackFor = Exception.class)
     @Override
     public ResponseResult saveBlog(Blog blog) {
@@ -63,6 +70,7 @@ public class BlogServiceImpl implements BlogService {
             return ResponseResult.failResult("标签数量限制为6!");
         }
         //保存文章
+       guavaCache.invalidate(BLOG_DETAIL + blog.getBlogId());
         int count = blogMapper.insertSelective(blog);
         if (count > INTEGER_ZERO) {
             if (batchTagsRelation(blog, blogCategory, tags)) {
