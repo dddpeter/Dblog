@@ -3732,7 +3732,7 @@
  }
  
  .topic-header .time {
-   font-size: 16px;
+   font-size: 10px;
    color: #C7C7C7;
    line-height: 36px;
  }
@@ -3804,7 +3804,7 @@
  @media only screen and (min-width: 750px) {
    span.time.pc_time {
      display: inline-block !important;
-     font-size: 16px;
+     font-size: 10px;
      color: #C7C7C7;
      line-height: 36px;
    }

@@ -1,6 +1,8 @@
 package club.javafan.blog.configs.datasource;
 
 
+
+import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -35,7 +37,7 @@ public class MybatisConfig {
     @Resource
     private DataSource slaveDataSource;
 
-    @Value("${mybatis.mapper-path}")
+    @Value("${mybatis-plus.mapper-locations}")
     private String MAPPER_PATH;
 
     @Bean
@@ -53,14 +55,14 @@ public class MybatisConfig {
 
     @Bean
     public SqlSessionFactory sqlSessionFactory(@Qualifier("dynamicDataSource")DataSource dynamicDataSource) throws Exception {
-        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        MybatisSqlSessionFactoryBean sqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dynamicDataSource);
         sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(MAPPER_PATH));
         return sqlSessionFactoryBean.getObject();
     }
 
     @Bean
-    public SqlSessionTemplate sqlSessionTemplate(@Qualifier("sqlSessionFactory")SqlSessionFactory sqlSessionFactory) throws Exception {
+    public SqlSessionTemplate sqlSessionTemplate(@Qualifier("sqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
     @Bean

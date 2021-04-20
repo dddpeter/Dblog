@@ -110,8 +110,7 @@ thymeleaf:
   enabled: true
 #设置mybatis
 
-mybatis:
-  mapper-path: classpath:mapper/*.xml
+
 #设置端口
 server:
   servlet:
@@ -120,6 +119,11 @@ server:
     path: error/error_404
   #上线需要改为线上环境的证书和密码
   port: 8000
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/javascript,application/javascript,text/css
+    min-response-size: 10
+    excluded-user-agents: gozilla,traviata
 #  ssl:
 #    key-store: classpath:jks/blog.javafan.club.jks
 #    key-store-password: ren123
@@ -151,3 +155,7 @@ baidu:
   appId: 23916718
   appKey: GeKMqkqPdxpfnktWML8cIQOA
   appSecret: TTWXOxGSaUW2Griq769gVGK4fbxGlUsS
+
+mybatis-plus:
+  type-aliases-package: club.javafan.blog.domain
+  mapper-locations: classpath*:mapper/*.xml

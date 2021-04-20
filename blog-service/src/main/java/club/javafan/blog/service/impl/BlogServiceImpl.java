@@ -70,7 +70,7 @@ public class BlogServiceImpl implements BlogService {
             return ResponseResult.failResult("标签数量限制为6!");
         }
         //保存文章
-       guavaCache.invalidate(BLOG_DETAIL + blog.getBlogId());
+       guavaCache.invalidate(BLOG_DETAIL + blog.getBlogId().toString());
         int count = blogMapper.insertSelective(blog);
         if (count > INTEGER_ZERO) {
             if (batchTagsRelation(blog, blogCategory, tags)) {
@@ -152,7 +152,9 @@ public class BlogServiceImpl implements BlogService {
         blogTagRelationMapper.batchDelete(ids);
         //删除相关评论
         blogCommentMapper.deleteBatchByBlogId(ids);
-
+        for(Integer id :ids){
+            guavaCache.invalidate(BLOG_DETAIL + id.intValue());
+        }
         return blogMapper.deleteBatch(ids) > INTEGER_ZERO;
     }
 
@@ -178,6 +180,7 @@ public class BlogServiceImpl implements BlogService {
         //修改blog信息->修改分类排序值->删除原关系数据->保存新的关系数据
         BlogTagRelationExample example = new BlogTagRelationExample();
         example.createCriteria().andBlogIdEqualTo(blog.getBlogId());
+        guavaCache.invalidate(BLOG_DETAIL + blog.getBlogId().toString());
         blogTagRelationMapper.deleteByExample(example);
         batchTagsRelation(blog, blogCategory, tags);
         int con = blogMapper.updateByPrimaryKeySelective(blog);

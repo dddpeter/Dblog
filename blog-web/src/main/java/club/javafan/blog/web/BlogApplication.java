@@ -1,5 +1,6 @@
 package club.javafan.blog.web;
 
+
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,9 +12,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @ComponentScan({
         "club.javafan.blog.service"
-        , "club.javafan.blog.web.controller"
-        , "club.javafan.blog.web.aop"
-        , "club.javafan.blog.web.filter"
+        , "club.javafan.blog.web"
+        , "club.javafan.blog.repository"
         , "club.javafan.blog.configs"
         , "club.javafan.blog.common"
         , "club.javafan.blog.worker"

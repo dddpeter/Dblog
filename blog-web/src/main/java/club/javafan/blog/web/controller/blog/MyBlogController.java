@@ -70,7 +70,7 @@ public class MyBlogController {
      */
     @GetMapping({"/", "/index", "index.html"})
     public ModelAndView index(HttpServletRequest request) throws Exception {
-        return this.page(1, 7);
+        return this.page(1, 15);
     }
     /**
      * 首页 分页数据
@@ -78,7 +78,7 @@ public class MyBlogController {
      * @return
      */
     @GetMapping({"/page/{pageNum}"})
-    public ModelAndView page(@PathVariable("pageNum") int pageNum, @RequestParam(defaultValue = "7") Integer pageSize) throws Exception {
+    public ModelAndView page(@PathVariable("pageNum") int pageNum, @RequestParam(defaultValue = "15") Integer pageSize) throws Exception {
         PageResult blogPageResult = blogService.getBlogsForIndexPage(pageNum, pageSize);
         ModelAndView modelAndView = new ModelAndView("blog/amaze/index");
         if (isNull(blogPageResult)) {

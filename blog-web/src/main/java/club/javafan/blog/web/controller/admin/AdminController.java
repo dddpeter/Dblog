@@ -33,7 +33,7 @@ import static java.util.Objects.nonNull;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-
+    public final static int EXPIRE_SECONDS = 30 * 60 * 4;
     @Resource
     private AdminUserService adminUserService;
     @Resource
@@ -184,14 +184,17 @@ public class AdminController {
         //加密
         String origin = adminUser.getLoginUserName() + adminUser.getAdminUserId() + adminUser.getLoginPassword() + new Date();
         String md5 = MD5Util.md5Encode(origin, "UTF-8");
-        redisUtil.set(RedisKeyConstant.BLOG_SESSION + adminUser.getLoginUserName(), md5, 30 * 60);
+        redisUtil.set(
+                RedisKeyConstant.BLOG_SESSION + adminUser.getLoginUserName(),
+                md5,
+                EXPIRE_SECONDS);
         Cookie cookie = new Cookie(COOKIES, md5);
         //设置有效时间半个小时
-        cookie.setMaxAge(30 * 60);
+        cookie.setMaxAge(EXPIRE_SECONDS);
         //设置为true 避免抓包
         cookie.setHttpOnly(true);
         Cookie useCookie = new Cookie(LOGIN_USER_NAME, adminUser.getLoginUserName());
-        useCookie.setMaxAge(30 * 60);
+        useCookie.setMaxAge(EXPIRE_SECONDS);
         response.addCookie(cookie);
         response.addCookie(useCookie);
     }
