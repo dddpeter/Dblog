@@ -6,8 +6,12 @@ import club.javafan.blog.common.util.BlogUtils;
 import club.javafan.blog.common.util.PageQueryUtil;
 import club.javafan.blog.common.util.PageResult;
 import club.javafan.blog.domain.Blog;
+import club.javafan.blog.domain.BlogImage;
+import club.javafan.blog.repository.BlogImageMapper;
 import club.javafan.blog.service.BlogService;
 import club.javafan.blog.service.CategoryService;
+import club.javafan.blog.service.ImageService;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -52,6 +56,9 @@ public class BlogController {
      */
     @Value("${file.file-path}")
     private String FILE_PATH;
+
+    @Resource
+    BlogImageMapper blogImageMapper;
 
     @GetMapping("/blogs/list")
     @ResponseBody
@@ -133,7 +140,16 @@ public class BlogController {
             File destFile = new File(newFileName);
             String fileUrl = BlogUtils.getHost(new URI(request.getRequestURL() + ""))
                     + "/upload/" + newFileName;
+            String location = System.getProperty("user.dir").replaceAll("\\\\", "/") + FILE_PATH;
+
+            BlogImage blogImage = BlogImage
+                    .builder()
+                    .imagePath(location + newFileName)
+                    .imageUrl(fileUrl)
+                    .build();
+            blogImageMapper.insert(blogImage);
             file.transferTo(destFile);
+
             request.setCharacterEncoding("utf-8");
             response.setHeader("Content-Type", "text/html");
             response.getWriter().write("{\"success\": 1, \"message\":\"success\",\"url\":\"" + fileUrl + "\"}");

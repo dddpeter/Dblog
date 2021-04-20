@@ -2,9 +2,11 @@ package club.javafan.blog.configs.datasource;
 
 
 
+import com.baomidou.mybatisplus.core.config.GlobalConfig;
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
+import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +19,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,11 +56,33 @@ public class MybatisConfig {
         dynamicDataSource.setTargetDataSources(dataSourceMap);
         return dynamicDataSource;
     }
-
     @Bean
-    public SqlSessionFactory sqlSessionFactory(@Qualifier("dynamicDataSource")DataSource dynamicDataSource) throws Exception {
+    public MetaObjectHandler metaObjectHandler(){
+        return new MetaObjectHandler(){
+            @Override
+            public void insertFill(MetaObject metaObject) {
+                this.setFieldValByName("createdTime", LocalDateTime.now(), metaObject);
+                this.setFieldValByName("modifiedTime", LocalDateTime.now(), metaObject);
+            }
+
+            @Override
+            public void updateFill(MetaObject metaObject) {
+                this.setFieldValByName("modifiedTime", LocalDate.now(), metaObject);
+
+            }
+        };
+    }
+    @Bean
+    public GlobalConfig globalConfig(MetaObjectHandler metaObjectHandler){
+        GlobalConfig globalConfig  = new GlobalConfig();
+        globalConfig.setMetaObjectHandler(metaObjectHandler);
+        return globalConfig;
+    }
+    @Bean
+    public SqlSessionFactory sqlSessionFactory(@Qualifier("dynamicDataSource")DataSource dynamicDataSource,GlobalConfig globalConfig) throws Exception {
         MybatisSqlSessionFactoryBean sqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dynamicDataSource);
+        sqlSessionFactoryBean.setGlobalConfig(globalConfig);
         sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(MAPPER_PATH));
         return sqlSessionFactoryBean.getObject();
     }
