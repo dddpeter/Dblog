@@ -1,7 +1,8 @@
 package club.javafan.blog.domain;
 
-import java.util.Date;
 import lombok.Data;
+
+import java.util.Date;
 
 @Data
 public class BlogTag {

@@ -70,7 +70,9 @@ public class BlogServiceImpl implements BlogService {
             return ResponseResult.failResult("标签数量限制为6!");
         }
         //保存文章
-       guavaCache.invalidate(BLOG_DETAIL + blog.getBlogId().toString());
+        if(blog.getBlogId() != null){
+            guavaCache.invalidate(BLOG_DETAIL + blog.getBlogId().toString());
+        }
         int count = blogMapper.insertSelective(blog);
         if (count > INTEGER_ZERO) {
             if (batchTagsRelation(blog, blogCategory, tags)) {
