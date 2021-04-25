@@ -4,9 +4,15 @@
     <main class="articles-list">
         <div>
             <th:block th:if="${!(null != blogPageResult && blogPageResult.list.size()> 0)}">
-                <h1>
-                    暂无相关博客！
-                </h1>
+              <div style=" display: flex;justify-content: center;">
+                  <div style="text-align: center">
+                      <div>暂无该分类的博文，请联系管理员：<a style="color: #1aaa55" href="mailto://dddpeter@126.com">dddpeter@126.com</a>,或者扫描以下二维码联系管理员</div>
+                      <div>
+                          <img th:src="@{/blog/amaze/images/img_1.png}" style="width: 60%">
+                      </div>
+                  </div>
+
+              </div>
             </th:block>
             <th:block th:if="${null != blogPageResult && blogPageResult.list.size()>0}">
                 <th:block th:each="blog,iterStat : ${blogPageResult.list}">

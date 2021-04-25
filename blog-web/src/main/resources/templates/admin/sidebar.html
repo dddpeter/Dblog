@@ -83,6 +83,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a th:href="@{/admin/images}" th:class="${path}=='tags'?'nav-link active':'nav-link'">
+                        <i class="fa fa-image nav-icon" aria-hidden="true"></i>
+                        <p>
+                            图片管理
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a th:href="@{/admin/links}" th:class="${path}=='links'?'nav-link active':'nav-link'">
                         <i class="fa fa-heart nav-icon" aria-hidden="true"></i>
                         <p>

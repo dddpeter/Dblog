@@ -23,6 +23,15 @@
     <link rel="stylesheet" th:href="@{/blog/amaze/css/all.min.css}">
     <script th:src="@{/blog/plugins/jquery/jquery.min.js}"></script>
     <script th:src="@{/blog/amaze/js/amazeui.min.js}"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?dc8b4702da40108b2ee0d86a4fac110d";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 <header th:fragment="header-fragment" class="am-topbar am-topbar-inverse am-topbar-fixed-top">
     <div class="amz-container">

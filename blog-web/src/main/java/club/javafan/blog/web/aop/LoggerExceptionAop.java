@@ -81,7 +81,7 @@ public class LoggerExceptionAop {
     @Before(value = "controllerPoint()||servicePointCut()||commonPointCut()||workerPointCut()")
     public void before(JoinPoint joinPoint) {
         String s = printParams(joinPoint);
-        logger.info(s);
+        logger.debug(s);
     }
 
     /**
@@ -112,7 +112,7 @@ public class LoggerExceptionAop {
         if (isNull(returnObj)) {
             return;
         }
-        logger.info("club.javafan.blog return result: {}", JSONObject.toJSONString(returnObj));
+        logger.debug("club.javafan.blog return result: {}", JSONObject.toJSONString(returnObj));
     }
 
     @AfterThrowing(value = "controllerPoint()||servicePointCut()||commonPointCut()||workerPointCut()", throwing = "e")
@@ -157,7 +157,7 @@ public class LoggerExceptionAop {
         log.append("执行时间: ")
                 .append(end - begin)
                 .append(" ms");
-        logger.info(log.toString());
+        logger.debug(log.toString());
         return result;
     }
 
