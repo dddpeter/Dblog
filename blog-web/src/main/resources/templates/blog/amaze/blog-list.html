@@ -18,7 +18,37 @@
                 <th:block th:each="blog,iterStat : ${blogPageResult.list}">
                     <div data-am-widget="list_news" class="am-list-news am-list-news-default">
                         <!--列表标题-->
+
+                        <div class="am-list-news-bd">
+                            <ul class="am-list"  style="margin-bottom: 0.5rem">
+                                <!--缩略图在标题左边-->
+                                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+                                    <div class="am-u-sm-4 am-list-thumb" style="text-align: center">
+                                        <a th:href="@{'/blog/' + ${blog.blogId}}">
+                                            <img th:src="@{${blog.blogCoverImage}}"
+                                                 style="width: 15rem;height: 7rem;"/>
+                                        </a>
+                                    </div>
+                                    <div class=" am-u-sm-8 am-list-main">
+                                        <h4 class="am-list-item-hd"><a th:href="@{'/blog/' + ${blog.blogId}}" style="color: #1aaa55">
+                                            <th:block th:text="${blog.blogTitle}"></th:block>
+                                        </a></h4>
+                                        <span>
+                                            <a class="am-badge am-badge-success am-round"
+                                               th:href="@{'/category/' + ${blog.blogCategoryName}}"
+                                               th:text="${blog.blogCategoryName}"></a>
+                                            </span>
+                                     <!--   <div class="am-list-item-text" th:text="${blog.abstractContent}"
+                                             style="font-size: 1.5rem;">
+                                            该作者很懒，没有留下摘要！该作者很懒，没有留下摘要！该作者很懒，没有留下摘要！该作者很懒，没有留下摘要！
+                                        </div>
+-->
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="am-list-news-hd am-cf">
+
                             <div class="pull-left">
                                 <div class="blog-flex-center">
                                     <div class="blog-flex0">
@@ -33,38 +63,11 @@
                             </div>
                             <span class="pull-right time pc_time"
                                   th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd')}">2019-01</span>
-                            <span class="pull-left time mobile_time"
+                            <span class="pull-right time mobile_time"
                                   th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd')}">2018-01</span>
+
                         </div>
 
-                        <div class="am-list-news-bd">
-                            <ul class="am-list">
-                                <!--缩略图在标题左边-->
-                                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-                                    <div class="am-u-sm-4 am-list-thumb">
-                                        <a th:href="@{'/blog/' + ${blog.blogId}}">
-                                            <img th:src="@{${blog.blogCoverImage}}"
-                                                 style="width: 30rem;height: 13rem;"/>
-                                        </a>
-                                    </div>
-                                    <div class=" am-u-sm-8 am-list-main">
-                                        <h3 class="am-list-item-hd"><a th:href="@{'/blog/' + ${blog.blogId}}">
-                                            <th:block th:text="${blog.blogTitle}"></th:block>
-                                        </a></h3>
-                                        <span>
-                                            <a class="am-badge am-badge-success am-round"
-                                               th:href="@{'/category/' + ${blog.blogCategoryName}}"
-                                               th:text="${blog.blogCategoryName}"></a>
-                                            </span>
-                                        <div class="am-list-item-text" th:text="${blog.abstractContent}"
-                                             style="font-size: 1.5rem;">
-                                            该作者很懒，没有留下摘要！该作者很懒，没有留下摘要！该作者很懒，没有留下摘要！该作者很懒，没有留下摘要！
-                                        </div>
-
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </th:block>
                 <th:block th:if="${null != blogPageResult}">

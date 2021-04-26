@@ -3665,6 +3665,8 @@
  
  .pull-left {
    float: left !important;
+     display: inline-block;
+     line-height: 36px;
  }
  
  .blog-flex-center {
@@ -3689,6 +3691,7 @@
    color: inherit;
    text-decoration: none;
    cursor: pointer;
+     font-size: 12px ;
  }
  
  .avatar {
@@ -3706,6 +3709,8 @@
    border-radius: 50%;
    width: 36px;
    height: 36px;
+     position: relative;
+     top: -5px;
  }
  
  .blog-flex1 {
@@ -3729,6 +3734,8 @@
  
  .pull-right {
    float: right !important;
+     display: inline-block;
+     line-height: 36px;
  }
  
  .topic-header .time {
@@ -3791,6 +3798,8 @@
    }
    span.time.mobile_time {
      display: inline-block !important;
+       font-size: 10px;
+       color: #C7C7C7;
    }
    .author-lockup {
      margin-right: 20px;
@@ -3806,7 +3815,6 @@
      display: inline-block !important;
      font-size: 10px;
      color: #C7C7C7;
-     line-height: 36px;
    }
    span.time.mobile_time {
      display: none !important;

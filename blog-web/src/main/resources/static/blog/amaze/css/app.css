@@ -498,6 +498,8 @@ ul{
 .am-list-news-hd {
     padding-top: 0!important;
     padding-bottom: 0!important;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .wechat-img{
     text-align: center;
