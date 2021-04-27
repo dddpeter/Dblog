@@ -560,3 +560,14 @@ ul{
 .person-logo img{
     width: 100%;
 }
+/*#socialIconsDiv{
+    width: 38px;
+    position: fixed;
+    right:4px;
+    background-color: #FFF;
+    top:40%;
+    border-radius: 8px 0 0 8px;
+}*/
+.social-share .icon-wechat .wechat-qrcode{
+    z-index: 1001!important;
+}

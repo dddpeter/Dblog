@@ -4,12 +4,14 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
 </head>
 <link rel="stylesheet" th:href="@{/admin/plugins/editormd/css/editormd.preview.css}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
 <body>
 <div th:replace="blog/amaze/header::header-fragment"></div>
 <div class="container" style="position:relative;margin-top: 2rem;">
     <article class="am-article">
         <div class="am-article-hd" style="text-align: center">
-            <h1 class="am-article-title" th:text="${blogDetailVO.blogTitle}">永远的蝴蝶</h1>
+            <h1 class="am-article-title" th:text="${blogDetailVO.blogTitle}"></h1>
             <p class="am-article-meta">
                 <span><i class="am-icon-calendar am-icon-fw"></i>&nbsp;</span><span
                     th:text="${#dates.format(blogDetailVO.createTime, 'yyyy-MM-dd')}"></span>
@@ -19,7 +21,6 @@
             </p>
             <div>
                 <th:block th:each="tag : ${blogDetailVO.blogTags}">
-
                                 <a class="am-badge am-badge-success"
                                    th:href="@{'/tag/' + ${tag}}">
                                     <th:block th:text="${tag}"></th:block>
@@ -27,8 +28,17 @@
                 </th:block>
             </div>
         </div>
+        <div style="text-align: center;z-index: 1001;margin: 20px 0;" class="social-share"
+             id="socialIconsDiv"
+             data-sites="qzone, qq, weibo,wechat"
+             th:data-title="${blogDetailVO.blogTitle}"
+             th:data-description="'烈焰之雨的博客,'+${blogDetailVO.blogTitle}">
+
+        </div>
 
         <div class="am-article-bd" id="post-content">
+
+
             <th:block th:utext="${blogDetailVO.blogContent}"/>
             <p class="am-article-meta" style="text-align: center">
                 欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。</p>
