@@ -1,6 +1,9 @@
 <!DOCTYPE html><!--suppress ALL-->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="blog-list-fragment" class="am-u-lg-8 am-u-sm-12">
+    <div class="person-logo">
+        <img th:src="@{/blog/amaze/images/website.png}">
+    </div>
     <main class="articles-list">
         <div>
             <th:block th:if="${!(null != blogPageResult && blogPageResult.list.size()> 0)}">
@@ -18,56 +21,36 @@
                 <th:block th:each="blog,iterStat : ${blogPageResult.list}">
                     <div data-am-widget="list_news" class="am-list-news am-list-news-default">
                         <!--列表标题-->
-
                         <div class="am-list-news-bd">
-                            <ul class="am-list"  style="margin-bottom: 0.5rem">
+                            <ul class="am-list"  style="margin-bottom: 0">
                                 <!--缩略图在标题左边-->
-                                <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-                                    <div class="am-u-sm-4 am-list-thumb" style="text-align: center">
+                                <li class="blog-list-li am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left "
+                                >
+                                    <div class="am-u-sm-5  am-u-md-3 am-list-thumb" style="text-align: center">
                                         <a th:href="@{'/blog/' + ${blog.blogId}}">
-                                            <img th:src="@{${blog.blogCoverImage}}"
-                                                 style="width: 15rem;height: 7rem;"/>
+                                            <img th:src="@{${blog.blogCoverImage}}" class="blog-cover-image"/>
                                         </a>
                                     </div>
-                                    <div class=" am-u-sm-8 am-list-main">
-                                        <h4 class="am-list-item-hd"><a th:href="@{'/blog/' + ${blog.blogId}}" style="color: #1aaa55">
+                                    <div class=" am-u-sm-7  am-u-md-7 am-list-main blog-list-title">
+                                        <h4 class="am-list-item-hd">
+                                            <a th:href="@{'/blog/' + ${blog.blogId}}" class="title-link">
                                             <th:block th:text="${blog.blogTitle}"></th:block>
-                                        </a></h4>
+                                        </a>
+                                        </h4>
                                         <span>
                                             <a class="am-badge am-badge-success am-round"
                                                th:href="@{'/category/' + ${blog.blogCategoryName}}"
-                                               th:text="${blog.blogCategoryName}"></a>
+                                               th:text="${blog.blogCategoryName!=null? blog.blogCategoryName:'未设置'}"></a>
                                             </span>
-                                     <!--   <div class="am-list-item-text" th:text="${blog.abstractContent}"
-                                             style="font-size: 1.5rem;">
-                                            该作者很懒，没有留下摘要！该作者很懒，没有留下摘要！该作者很懒，没有留下摘要！该作者很懒，没有留下摘要！
-                                        </div>
--->
+                                    </div>
+                                    <div class="am-u-md-2 blog-created-dates time">
+                                        <div class="blog-time-year" th:text="${#dates.format(blog.createTime, 'yyyy')}">2019</div>
+                                        <div class="blog-time-date" th:text="${#dates.format(blog.createTime, 'MM月dd日')}">01月01日</div>
                                     </div>
                                 </li>
                             </ul>
+                            <div th:text="${#dates.format(blog.createTime, 'yyyy年MM月dd日 HH:mm:SS')}" class="blog-created-dates-mobile time"> </div>
                         </div>
-                        <div class="am-list-news-hd am-cf">
-
-                            <div class="pull-left">
-                                <div class="blog-flex-center">
-                                    <div class="blog-flex0">
-                                        <img th:src="@{${configurations.get('yourAvatar')}}" alt=""
-                                             class="link avatar avatar-image">
-                                    </div>
-                                    <div class="author-lockup blog-flex1">
-                                        <a class="link am-link-muted" href="javascript:;"
-                                           th:text="${configurations.get('yourName')}">13</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <span class="pull-right time pc_time"
-                                  th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd')}">2019-01</span>
-                            <span class="pull-right time mobile_time"
-                                  th:text="${#dates.format(blog.createTime, 'yyyy-MM-dd')}">2018-01</span>
-
-                        </div>
-
                     </div>
                 </th:block>
                 <th:block th:if="${null != blogPageResult}">

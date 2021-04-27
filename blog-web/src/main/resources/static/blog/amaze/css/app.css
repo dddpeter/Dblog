@@ -553,3 +553,10 @@ ul{
     color: #819090;
     font-size: 12px;
 }
+.person-logo{
+    padding:0 20%;
+    background-color: #FFF;
+}
+.person-logo img{
+    width: 100%;
+}
