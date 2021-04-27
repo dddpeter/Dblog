@@ -98,9 +98,7 @@ h2.sectionHead:before {
     background-image: url(../images/icons.png);
 }
 
-h2#titleName {
-    margin: 20px -60px 10px;
-}
+
 
 h2#ribbon:before {
     background-position: left -45px;
@@ -352,7 +350,7 @@ ul#skills.ready {
 ul#skills li {
     position: relative;
     right: 100%;
-    background-color: #1aaa55;
+
     color: #fff;
     font: bold 12px/20px sans-serif;
     letter-spacing: 1px;
@@ -360,6 +358,7 @@ ul#skills li {
     padding: 3px 1.1428571428571428% 0;
     text-transform: uppercase;
     z-index: 1;
+    border-radius: 0 10px 10px 0;
 }
 
 ul#skills li:after {
@@ -435,54 +434,68 @@ ul#skills li:hover {
 
 li.s100 {
     width: 97.71428571428571%;
+    background-color: #1aaa55;
 }
 
 li.s95 {
     width: 92.71428571428571%;
+    background-color: rgba(26,170,85,0.95);
+
 }
 
 li.s90 {
     width: 87.71428571428571%;
+    background-color: rgba(26,170,85,0.9);
 }
 
 li.s80 {
     width: 77.71428571428571%;
+    background-color: rgba(26,170,85,0.85);
 }
 
 li.s75 {
     width: 72.71428571428571%;
+    background-color: rgba(26,170,85,0.8);
 }
 
 li.s70 {
     width: 67.71428571428571%;
+    background-color: rgba(26,170,85,0.75);
 }
 
 li.s65 {
     width: 62.714285714285715%;
+    background-color: rgba(26,170,85,0.7);
 }
 
 li.s60 {
     width: 57.714285714285715%;
+    background-color: rgba(26,170,85,0.65);
 }
 
 li.s50 {
     width: 47.714285714285715%;
+    background-color: rgba(26,170,85,0.6);
 }
 
 li.s40 {
     width: 37.714285714285715%;
+    background-color: rgba(26,170,85,0.5)5;
 }
 
 li.s30 {
     width: 27.714285714285715%;
+    background-color: rgba(26,170,85,0.5);
 }
 
 li.s20 {
     width: 17.714285714285715%;
+    background-color: rgba(26,170,85,0.45);
 }
 
 li.s10 {
     width: 7.714285714285714%;
+    background-color: rgba(26,170,85,0.4);
 }
 
 /* ------------------------*/
