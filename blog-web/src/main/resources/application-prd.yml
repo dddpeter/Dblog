@@ -37,7 +37,7 @@ spring:
         maximum-pool-size: 15
         connection-test-query: SELECT 1
     master:
-      jdbc-url: jdbc:mysql://127.0.0.1:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&&serverTimezone=Asia/Shanghai&autoReconnect=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
       username: dddpeter
       password: hqins@66
       driver-class-name: com.mysql.cj.jdbc.Driver

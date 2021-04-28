@@ -1,8 +1,16 @@
 <!DOCTYPE html><!--suppress ALL-->
 <html lang="en" xmlns:th="http://www.thymeleaf.org" class="am-topbar am-with-topbar-fixed-bottom">
 <div class="to-top" th:fragment="to-top-fragment">
-    <div class="amz-toolbar" id="amz-toolbar" style="right: 25px;position: fixed;bottom: 70px;z-index: 999;">
+    <div class="amz-toolbar" id="amz-toolbar" style="right: 25px;width:50px; position: fixed;bottom: 80px;z-index: 999;">
+        <a href="/"
+           title="home" class=" am-icon-btn am-success am-icon-home "></a>
         <a href="#top" title="回到顶部" class="am-icon-btn am-secondary am-icon-arrow-up am-active" id="amz-go-top"></a>
+        <style>
+            #amz-toolbar a{
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+        </style>
     </div>
 </div>
 </html>

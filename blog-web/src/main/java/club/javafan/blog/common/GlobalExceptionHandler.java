@@ -1,4 +1,4 @@
-package club.javafan.blog.web.common;
+package club.javafan.blog.common;
 
 import club.javafan.blog.common.result.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
