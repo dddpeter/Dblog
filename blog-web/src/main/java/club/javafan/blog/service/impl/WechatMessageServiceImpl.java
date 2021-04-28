@@ -43,7 +43,7 @@ public class WechatMessageServiceImpl implements WechatMessageService {
                 else{
                     //自动回复
                     TextMessage text = new TextMessage();
-                    text.setContent("欢迎访问本公众号");
+                    text.setContent("欢迎访问本公众号，博客地址: https://blog.dddpeter.top");
                     text.setToUserName(fromUserName);
                     text.setFromUserName(toUserName);
                     text.setCreateTime(new Date().getTime());
@@ -59,7 +59,7 @@ public class WechatMessageServiceImpl implements WechatMessageService {
                 if (eventType.equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {
                     //文本消息
                     TextMessage text = new TextMessage();
-                    text.setContent("欢迎访问本公众号");
+                    text.setContent("欢迎访问本公众号，博客地址: https://blog.dddpeter.top");
                     text.setToUserName(fromUserName);
                     text.setFromUserName(toUserName);
                     text.setCreateTime(new Date().getTime());
