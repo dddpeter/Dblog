@@ -3740,14 +3740,18 @@
      display: inline-block;
      line-height: 36px;
  }
+ .am-list{
+     margin: 0!important;
+ }
+ .am-list>li{
+     border: 0 !important;
+ }
  .blog-list-li{
-     border-top: 0!important;
-     border-bottom: 1px solid #dedede!important;
-     padding: 0.8rem !important;
+/*     border-top: 0!important;
+     border-bottom: 1px solid #dedede!important;*/
+     padding: 1.5rem 0.8rem !important;
  }
- .blog-list-li:hover{
-     box-shadow: 0 2px 15px rgb(0 0 0 / 15%);
- }
+
 
 .blog-list-title a:hover{
     color: #1aaa55;

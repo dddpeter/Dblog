@@ -515,7 +515,7 @@ ul{
     border: 1px solid rgb(212, 212, 213);
     -webkit-box-shadow: 0 1px 2px 0 rgb(0 0 0 / 30%);
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 30%);
-    margin-bottom: 1.2rem !important;
+    margin: 1.8rem 0 !important;
 }
 
 .am-list-news-hd {
