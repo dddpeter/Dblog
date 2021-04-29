@@ -1,5 +1,6 @@
 <!DOCTYPE html><!--suppress ALL-->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <aside th:fragment="sidebar-fragment(path)" class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a th:href="@{/admin/index}" class="brand-link">
@@ -12,10 +13,12 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img th:src="@{/admin/dist/img/avatar5.png}" class="img-circle elevation-2" alt="User Image">
+                <img th:src="@{/admin/dist/img/headimg.png}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block" th:text="${session.loginUser}"></a>
+                <a href="#" class="d-block" id="username">
+
+                </a>
             </div>
         </div>
         <!-- Sidebar Menu -->
@@ -123,6 +126,12 @@
         </nav>
         <!-- /.sidebar-menu -->
     </div>
+    <!-- jQuery -->
+    <script th:src="@{/admin/plugins/jquery/jquery.min.js}"></script>
+    <script th:src="@{/admin/plugins/jquery/jquery.cookie.js}"></script>
+    <script>
+        $('#username').text($.cookie('LOGINUSERNAME'));
+    </script>
     <!-- /.sidebar -->
 </aside>
 </html>

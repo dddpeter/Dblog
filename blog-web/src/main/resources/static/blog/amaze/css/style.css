@@ -4,8 +4,9 @@
     margin: 60px auto 30px;
     padding: 40px 30px;
     background: #fff;
-    border: 1px solid rgb(227, 228, 230);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+    border: 1px solid rgb(212, 212, 213);
+    -webkit-box-shadow: 0 1px 2px 0 rgb(0 0 0 / 30%);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 30%);
     transition: all 0.1s ease-out 0s;
     position: relative;
 }

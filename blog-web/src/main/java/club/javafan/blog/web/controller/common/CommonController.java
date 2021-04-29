@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.Writer;
 
 /**
  * @author 敲代码的长腿毛欧巴(博客)
@@ -22,7 +24,22 @@ public class CommonController {
 
     @Resource
     private DefaultKaptcha captchaProducer;
-
+    @GetMapping("/jd_root.txt")
+    public void jdRootTxt(HttpServletResponse response) throws IOException {
+        Writer writer = response.getWriter();
+        writer.append("e95d2f4a675fe6f21822dc609f95b6fa2ed28f26e60f8313");
+        writer.flush();
+        writer.close();
+    }
+    @GetMapping("/robots.txt")
+    public void robotsTxt(HttpServletResponse response) throws IOException {
+        Writer writer = response.getWriter();
+        String lineSeparator = System.getProperty("line.separator", "\n");
+        writer.append("User-agent: *").append(lineSeparator);
+        writer.append("Disallow:").append("/admin/*").append(lineSeparator);
+        writer.flush();
+        writer.close();
+    }
     @GetMapping("/common/kaptcha")
     public void defaultKaptcha(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
         byte[] captchaOutputStream = null;

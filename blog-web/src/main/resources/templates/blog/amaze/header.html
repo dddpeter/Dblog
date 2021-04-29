@@ -33,8 +33,8 @@
         })();
     </script>
 </head>
-<header th:fragment="header-fragment" class="am-topbar am-topbar-inverse am-topbar-fixed-top">
-    <div class="amz-container">
+<header th:fragment="header-fragment" class=" am-topbar am-topbar-inverse am-topbar-fixed-top">
+    <div class="amz-container app-header">
         <h1 class="am-topbar-brand">
             <a class="navbar-brand" href="/" th:text="${configurations.get('websiteName')}"></a>
           <!--  <a href="/">
@@ -49,7 +49,7 @@
             <span class="am-icon-bars">
             </span>
         </button>
-        <div class="am-collapse am-topbar-collapse navbar-center" id="doc-topbar-collapse-5">
+        <div class="am-collapse am-topbar-collapse navbar-left" id="doc-topbar-collapse-5">
             <ul class="am-nav am-nav-pills am-topbar-nav">
                 <li class="am-active">
                     <a th:href="@{/index}">

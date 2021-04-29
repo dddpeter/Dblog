@@ -33,7 +33,7 @@ public class WechatMessageServiceImpl implements WechatMessageService {
                 //这里根据关键字执行相应的逻辑
                 if(content.equals("1")){
                     TextMessage text = new TextMessage();
-                    text.setContent("欢迎访问本公众号");
+                    text.setContent("欢迎访问本公众号，博客地址: https://blog.dddpeter.top");
                     text.setToUserName(fromUserName);
                     text.setFromUserName(toUserName);
                     text.setCreateTime(new Date().getTime());

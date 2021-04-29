@@ -1,10 +1,11 @@
 <!DOCTYPE html><!--suppress ALL-->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="blog-list-fragment" class="am-u-lg-8 am-u-sm-12">
-    <div class="person-logo">
-        <img th:src="@{/blog/amaze/images/website.png}">
-    </div>
+<div th:fragment="blog-list-fragment" class="am-u-lg-8 am-u-sm-12  main-content">
+
     <main class="articles-list">
+        <div class="person-logo">
+            <img th:src="@{/blog/amaze/images/website.png}">
+        </div>
         <div>
             <th:block th:if="${!(null != blogPageResult && blogPageResult.list.size()> 0)}">
               <div style=" display: flex;justify-content: center;">

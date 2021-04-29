@@ -509,9 +509,13 @@
  /*Only phones */
  
  @media only screen and (max-width: 640px) {
+     .blog-list-li .am-list-thumb{
+         max-height: 150px!important;
+     }
    /**
      * Break strings if their length exceeds the width of their container
      */
+
    body {
      word-wrap: break-word;
      -webkit-hyphens: auto;
@@ -3537,7 +3541,6 @@
      margin-top: 0!important;
    margin-right: auto;
    margin-left: auto;
-     background-color: #FFF;
  }
  
  @media (min-width: 768px) {
@@ -3822,7 +3825,7 @@
    display: table;
    content: " ";
  }
- 
+
  @media only screen and (max-width: 750px) {
      .blog-cover-image{
          width: 100%!important;
@@ -3849,11 +3852,7 @@
          color: #666666;
          background-color: #FFFFE0;
      }
-     .am-list-news{
-         border: 1px solid #dedede;
-         border-radius:8px;
-         box-shadow: 0 2px 15px rgb(0 0 0 / 15%);
-     }
+
      .title-link{
          font-size: 14px;
          color: #333333;
@@ -4693,8 +4692,6 @@ aside.comments .comment header .meta {
     padding-right: 10px;
     padding-bottom: 10px;
     padding-left: 15px;
-    font-family: 微软雅黑;
-    font-size: 12px;
 }
 
 .blog-rights p {
@@ -4708,4 +4705,9 @@ aside.comments .comment header .meta {
 
 #friendlink{
     background-color: #FFF;
+}
+.border-base {
+    border: 1px solid rgb(212, 212, 213);
+    -webkit-box-shadow: 0 1px 2px 0 rgb(0 0 0 / 30%);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 30%);
 }

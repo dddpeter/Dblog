@@ -1,10 +1,10 @@
 #博客版本信息
 blog:
-  version: 1.0.0 beta
-  author: 敲代码的长腿毛欧巴
+  version: 1.2
+  author: dddpeter
   #博客的开始运行日期
   run:
-    date: 2020-01-01
+    date: 2021-01-01
 spring:
   profiles:
     active: ${ENV:}
@@ -154,6 +154,7 @@ logging:
     club:
       javafan:
         blog: debug
+    org.springframework.web: trace
 baidu:
   appId: 23916718
   appKey: GeKMqkqPdxpfnktWML8cIQOA
