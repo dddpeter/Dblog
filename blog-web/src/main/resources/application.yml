@@ -159,7 +159,6 @@ baidu:
   appId: 23916718
   appKey: GeKMqkqPdxpfnktWML8cIQOA
   appSecret: TTWXOxGSaUW2Griq769gVGK4fbxGlUsS
-
 mybatis-plus:
   type-aliases-package: club.javafan.blog.domain
   mapper-locations: classpath*:mapper/*.xml

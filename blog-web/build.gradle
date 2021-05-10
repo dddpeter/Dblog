@@ -40,9 +40,15 @@ dependencies {
     implementation 'org.apache.httpcomponents:httpclient:4.5.11'
     implementation 'com.google.guava:guava:28.2-jre'
     implementation 'org.springframework.boot:spring-boot-starter-cache:2.4.4'
-    implementation 'org.projectlombok:lombok:1.18.18'
+    implementation  'org.projectlombok:lombok:1.18.18'
     annotationProcessor  'org.projectlombok:lombok:1.18.18'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.4.4'
+    compile fileTree(dir: 'libs', include: [ '*.jar'])
+    implementation group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.2'
+    implementation group: 'org.codehaus.jackson', name: 'jackson-core-asl', version: '1.9.2'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+
 }
 bootJar{
     archiveVersion = '0.0.1-SNAPSHOT'

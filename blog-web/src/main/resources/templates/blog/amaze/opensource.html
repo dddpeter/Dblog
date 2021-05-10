@@ -1,0 +1,73 @@
+<!DOCTYPE html><!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="blog/amaze/header::head-fragment">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+</head>
+<!--BASE STYLE CSS-->
+<link rel="stylesheet" th:href="@{blog/amaze/css/opensource.css}" type="text/css" media="screen"/>
+
+<link rel="stylesheet" th:href="@{/admin/plugins/editormd/css/editormd.preview.css}"/>
+<style>
+    #wrapper{
+        min-height: 20rem;
+    }
+    #projects{
+        margin: 0 auto;
+    }
+    #projects a {
+        display: block;
+        padding: 0 10rem 1rem 10rem;
+    }
+    #projects a img {
+        width: 100%;
+    }
+</style>
+<body>
+<div th:replace="blog/amaze/header::header-fragment"></div>
+
+<div class="container" style="position:relative;margin-top: 2rem;">
+    <div class="am-article" id="wrapper">
+        <div id="projects">
+            <textarea style="display:none;">
+[![烈焰之雨/RainWeather](https://gitee.com/dddpeter/rainweather/widgets/widget_card.svg?colors=4183c4,ffffff,ffffff,e3e9ed,666666,9b9b9b)](https://gitee.com/dddpeter/rainweather)
+[![烈焰之雨/DBlog](https://gitee.com/dddpeter/DBlog/widgets/widget_card.svg?colors=4183c4,ffffff,ffffff,e3e9ed,666666,9b9b9b)](https://gitee.com/dddpeter/DBlog)
+            </textarea>
+        </div>
+    </div>
+</div>
+<div th:replace="blog/amaze/to-top::to-top-fragment"></div>
+<footer th:replace="blog/amaze/footer::footer-fragment"></footer>
+</body>
+<!-- 背景动画 -->
+<script type="text/javascript" color="26,170,85" opacity='0.7' zIndex="-2" count="200"
+        src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+<script th:src="@{/blog/amaze/js/html2canvas.min.js}"></script>
+<script th:src="@{/blog/plugins/jquery/jquery.min.js}"></script>
+<!-- editor.md -->
+<script th:src="@{/admin/plugins/editormd/editormd.min.js}"></script>
+<script th:src="@{/admin/plugins/editormd/lib/marked.min.js}"></script>
+<script th:src="@{/admin/plugins/editormd/lib/prettify.min.js}"></script>
+<script th:src="@{/admin/plugins/editormd/lib/raphael.min.js}"></script>
+<script th:src="@{/admin/plugins/editormd/lib/underscore.min.js}"></script>
+<script th:src="@{/admin/plugins/editormd/lib/sequence-diagram.min.js}"></script>
+<script th:src="@{/admin/plugins/editormd/lib/flowchart.min.js}"></script>
+<script th:src="@{/admin/plugins/editormd/lib/jquery.flowchart.min.js}"></script>
+
+
+
+<script type="text/javascript">
+    $(function () {
+        var mdPreview;
+        mdPreview = editormd.markdownToHTML("projects", {
+            htmlDecode: "style,script,iframe,a,img,center",
+            emoji: true,
+            taskList: true,
+            tex: true,  // 默认不解析
+            flowChart: true,  // 默认不解析
+            sequenceDiagram: true,  // 默认不解析
+            previewCodeHighlight: true
+        });
+    });
+</script>
+
+</html>

@@ -389,4 +389,6 @@ public class MyBlogController {
         }
         return o instanceof QQUserInfoVO ? (QQUserInfoVO) o : new QQUserInfoVO();
     }
+
+
 }

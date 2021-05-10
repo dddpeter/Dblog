@@ -50,13 +50,14 @@
             </span>
         </button>
         <div class="am-collapse am-topbar-collapse navbar-left" id="doc-topbar-collapse-5">
-            <ul class="am-nav am-nav-pills am-topbar-nav">
-                <li class="am-active">
+            <ul class="am-nav am-nav-pills am-topbar-nav" id="nav">
+                <li id="index" >
                     <a th:href="@{/index}">
                         首页
                     </a>
                 </li>
-                <li class="am-dropdown" data-am-dropdown="">
+
+                <li class="am-dropdown" data-am-dropdown="" id="category">
                     <a class="am-dropdown-toggle" data-am-dropdown-toggle="" href="javascript:;">
                         分类
                         <span class="am-icon-caret-down">
@@ -74,12 +75,38 @@
                         </th:block>
                     </ul>
                 </li>
-                <li>
-                    <a th:href="@{/about}">关于</a>
+                <li id="opensource">
+                    <a th:href="@{/opensource}" >
+                        开源
+                    </a>
+                </li>
+
+                <li id="about">
+                    <a th:href="@{/about}" >关于</a>
                 </li>
 
             </ul>
         </div>
     </div>
+    <script>
+        var url = window.location.pathname
+        console.log(url)
+        if(url=='/' || url.startsWith("/index")){
+            $('#index').addClass('am-active');
+        }
+        else if(url.startsWith('/category')){
+            $('#category').addClass('am-active');
+        }
+        else if(url.startsWith('/opensource')){
+            $('#opensource').addClass('am-active');
+        }
+
+        else if(url.startsWith('/about')){
+            $('#about').addClass('am-active');
+        }
+        else{
+            $('#index').addClass('am-active');
+        }
+    </script>
 </header>
 </html>

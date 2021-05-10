@@ -184,7 +184,7 @@
     $(function () {
         var testEditormdView;
         testEditormdView = editormd.markdownToHTML("post-content", {
-            htmlDecode: "style,script,iframe",  // you can filter tags decode
+            htmlDecode: "style,script,iframe,a,img,center",  // you can filter tags decode
             emoji: true,
             taskList: true,
             tex: true,  // 默认不解析
