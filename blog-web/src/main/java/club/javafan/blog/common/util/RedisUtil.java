@@ -97,10 +97,6 @@ public class RedisUtil {
         return key == null ? null : redisTemplate.opsForValue().get(key);
     }
 
-    public static void main(String[] args) {
-        Object daa = new RedisUtil().hasKey("daa");
-        System.out.println(daa);
-    }
 
     /**
      * 批量查询
