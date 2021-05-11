@@ -80,8 +80,8 @@ h2.sectionHead {
     clear: both;
     font: bold 20px/12px 'verdana', sans-serif;
     margin: 30px -30px;
-    border-left: 52px solid #168f48;
-    color: #168f48;
+    border-left: 52px solid #388E3C;
+    color: #388E3C;
     padding: 1px 0 0 8px;
     letter-spacing: -2px;
     text-transform: uppercase;
@@ -90,7 +90,7 @@ h2.sectionHead {
 
 h2.sectionHead:before {
     content: "";
-    color: #168f48;
+    color: #388E3C;
     position: absolute;
     width: 45px;
     height: 45px;
@@ -180,7 +180,7 @@ h2#contact:before {
 #bio p a:hover {
     text-decoration: none;
     color: #fff;
-    background: #168f48;
+    background: #388E3C;
 }
 
 #bio a.selectedWork {
@@ -430,7 +430,7 @@ ul#skills li span {
 }
 
 ul#skills li:hover {
-    background: #168f48;
+    background: #388E3C;
 }
 
 li.s100 {

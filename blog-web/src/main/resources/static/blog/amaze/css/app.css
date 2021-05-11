@@ -55,7 +55,7 @@ body {
 
 .log-button:hover {
     background-color: #1aaa55;
-    border: 2px solid #168f48;
+    border: 2px solid #388E3C;
     color: #ffffff;
 }
 
@@ -488,9 +488,10 @@ h1 span {
     border-left: 2px solid #10D07A;
 }
 
+
 body{
      /* background-color: #ededef;  */
-    background-color:rgba(237,237,239,0.7);
+    background-color:#ededed;
 }
 ul{
     display: block;
@@ -512,7 +513,7 @@ ul{
 
 .am-list-news{
     background-color: #FFF;
-    border: 1px solid rgb(212, 212, 213);
+    border: 1px solid #BDBDBD;
     -webkit-box-shadow: 0 1px 2px 0 rgb(0 0 0 / 30%);
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 30%);
     margin: 1.8rem 0 !important;
@@ -566,7 +567,7 @@ ul{
     visibility:hidden;
 }
 .resume-item-title{
-    color: #168f48;
+    color: #388E3C;
 }
 .resume-item-title-2{
     margin: 8px 0!important;

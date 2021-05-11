@@ -47,13 +47,13 @@
                             <li class="sidebar-list-item"><a th:href="@{'/blog/' + ${newBlog.blogId}}"
                                                              class="tag tooltipped tooltipped-n">
                                 <th:block th:if="${newBlogStat.count <= 3}">
-                                    <span class="am-badge am-badge-warning am-radius"
-                                          th:text="${newBlogStat.count}"></span>&nbsp;&nbsp;
-                                    <th:block th:text="${newBlog.blogTitle}"></th:block>
+                                    <span  class="am-badge am-badge-warning am-radius index"
+                                          th:text="${newBlogStat.count}"></span>
+                                    <span class="title" th:text="${newBlog.blogTitle}"></span>
                                 </th:block>
                                 <th:block th:if="${newBlogStat.count > 3}">
-                                    <span class="am-badge am-radius" th:text="${newBlogStat.count}"></span>&nbsp;&nbsp;
-                                    <th:block th:text="${newBlog.blogTitle}"></th:block>
+                                    <span  class="am-badge am-radius index" th:text="${newBlogStat.count}"></span>
+                                    <span class="title" th:text="${newBlog.blogTitle}"></span>
                                 </th:block>
                             </a>
                             </li>
@@ -75,13 +75,16 @@
                             <li class="sidebar-list-item"><a class="tag tooltipped tooltipped-n"
                                                              th:href="@{'/blog/' + ${hotBlog.blogId}}">
                                 <th:block th:if="${hotBlogStat.count <= 3}">
-                                    <span class="am-badge am-badge-warning am-radius"
-                                          th:text="${hotBlogStat.count}"></span>&nbsp;&nbsp;<th:block
-                                        th:text="${hotBlog.blogTitle}"></th:block>
+                                    <span  class="am-badge am-badge-warning am-radius index"
+                                          th:text="${hotBlogStat.count}"></span>
+                                    <span class="title"
+                                        th:text="${hotBlog.blogTitle}"></span>
                                 </th:block>
                                 <th:block th:if="${hotBlogStat.count > 3}">
-                                    <span class="am-badge am-radius" th:text="${hotBlogStat.count}"></span>&nbsp;&nbsp;<th:block
-                                        th:text="${hotBlog.blogTitle}"></th:block>
+                                    <span class="am-badge am-radius index" th:text="${hotBlogStat.count}"></span>
+
+                                    <span class="title"
+                                        th:text="${hotBlog.blogTitle}"></span>
                                 </th:block>
                             </a></li>
                         </th:block>
