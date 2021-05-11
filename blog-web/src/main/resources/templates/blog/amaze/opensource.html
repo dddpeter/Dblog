@@ -21,6 +21,24 @@
     #projects a img {
         width: 100%;
     }
+    @media only screen and (max-width: 640px) {
+        #projects a {
+            display: block;
+            padding: 0 0.8rem 1rem 0.8rem;
+        }
+    }
+    @media only screen and (min-width: 641px) {
+        #projects a {
+            display: block;
+            padding: 0 4rem 1rem 4rem;
+        }
+    }
+    @media only screen and (min-width: 1000px) {
+        #projects a {
+            display: block;
+            padding: 0 12rem 1rem 12rem;
+        }
+    }
 </style>
 <body>
 <div th:replace="blog/amaze/header::header-fragment"></div>
