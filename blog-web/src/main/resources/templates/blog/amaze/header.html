@@ -1,12 +1,12 @@
 <!DOCTYPE html><!--suppress ALL-->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head-fragment">
     <meta charset="utf-8">
     <title th:text="|${configurations.get('websiteName')}|">主页</title>
     <meta name="description" th:content="${configurations.get('websiteDescription')}">
     <meta name="keywords" content="Spring Boot Java 轻量级 博客 好看 Amaze UI MySQL 敲代码的长腿欧巴">
     <link rel="shortcut icon" th:href="@{${configurations.get('websiteIcon')}}"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,shrink-to-fit=no">
     <meta http-equiv="Window-target" content="_top"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,6 +23,7 @@
     <link rel="stylesheet" th:href="@{/blog/amaze/css/all.min.css}">
     <script th:src="@{/blog/plugins/jquery/jquery.min.js}"></script>
     <script th:src="@{/blog/amaze/js/amazeui.min.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script>
         var _hmt = _hmt || [];
         (function() {

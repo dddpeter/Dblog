@@ -17,3 +17,5 @@ package-lock.json
 .gradle
 /build
 **/build/
+.DS_Store
+opt/

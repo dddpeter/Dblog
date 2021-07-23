@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--suppress ALL-->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html  lang="zh-CN"  xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="blog-list-fragment" class="am-u-lg-8 am-u-sm-12  main-content">
 
     <main class="articles-list">
@@ -22,35 +22,33 @@
                 <th:block th:each="blog,iterStat : ${blogPageResult.list}">
                     <div data-am-widget="list_news" class="am-list-news am-list-news-default">
                         <!--列表标题-->
-                        <div class="am-list-news-bd">
+                        <div class="am-list-news-bd" style=" border-bottom: 2px solid #e8eaec;">
                             <ul class="am-list" >
                                 <!--缩略图在标题左边-->
-                                <li class="blog-list-li am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left "
-                                >
-                                    <div class="am-u-sm-5  am-u-md-3 am-list-thumb" style="text-align: center">
-                                        <a th:href="@{'/blog/' + ${blog.blogId}}">
-                                            <img th:src="@{${blog.blogCoverImage}}" class="blog-cover-image"/>
-                                        </a>
-                                    </div>
-                                    <div class=" am-u-sm-7  am-u-md-7 am-list-main blog-list-title">
+                                <li class="blog-list-li am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left ">
+                                    <div class=" am-u-sm-12  am-u-md-9 am-list-main blog-list-title" style="position: relative">
                                         <h4 class="am-list-item-hd">
                                             <a th:href="@{'/blog/' + ${blog.blogId}}" class="title-link">
                                             <th:block th:text="${blog.blogTitle}"></th:block>
                                         </a>
                                         </h4>
-                                        <span>
+                                    </div>
+                                    <div class="am-u-md-3 blog-cover-image" th:style="'background-size:contain; background: url(' + ${blog.blogCoverImage} + ')'" >
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="clearfix">
+                                        <div class=" am-u-sm-12  am-u-md-6 blogtags">
+                                            <span style="color: rgba(0,0,0,.45);font-size: 12px">文章分类：</span>
                                             <a class="am-badge am-badge-success am-round"
                                                th:href="@{'/category/' + ${blog.blogCategoryName}}"
                                                th:text="${blog.blogCategoryName!=null? blog.blogCategoryName:'未设置'}"></a>
-                                            </span>
-                                    </div>
-                                    <div class="am-u-md-2 blog-created-dates time">
-                                        <div class="blog-time-year" th:text="${#dates.format(blog.createTime, 'yyyy')}">2019</div>
-                                        <div class="blog-time-date" th:text="${#dates.format(blog.createTime, 'MM月dd日')}">01月01日</div>
+                                        </div>
+                                        <div th:text="${#dates.format(blog.createTime, 'yyyy年MM月dd日 HH:mm:SS')}"
+                                             class="am-u-sm-12  am-u-md-6 blog-created-dates time"> </div>
                                     </div>
                                 </li>
                             </ul>
-                            <div th:text="${#dates.format(blog.createTime, 'yyyy年MM月dd日 HH:mm:SS')}" class="blog-created-dates-mobile time"> </div>
                         </div>
                     </div>
                 </th:block>

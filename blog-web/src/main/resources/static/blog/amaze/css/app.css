@@ -512,11 +512,10 @@ ul{
 }
 
 .am-list-news{
-    background-color: #FFF;
-    border: 1px solid #BDBDBD;
-    -webkit-box-shadow: 0 1px 2px 0 rgb(0 0 0 / 30%);
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 30%);
-    margin: 1.8rem 0 !important;
+    /*   border: 1px solid #BDBDBD;
+     -webkit-box-shadow: 0 1px 2px 0 rgb(0 0 0 / 30%);
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 30%);
+      margin: 1.8rem 0 !important;*/
 }
 
 .am-list-news-hd {
@@ -524,6 +523,7 @@ ul{
     padding-bottom: 0!important;
     padding-left: 5px;
     padding-right: 5px;
+    border-bottom: 1px solid #e8eaec;
 }
 .wechat-img{
     text-align: center;

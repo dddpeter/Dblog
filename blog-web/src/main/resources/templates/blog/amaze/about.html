@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--suppress ALL-->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html  lang="zh-CN"  xmlns:th="http://www.thymeleaf.org">
 <head th:replace="blog/amaze/header::head-fragment">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
 </head>
@@ -204,5 +204,11 @@
 <script th:src="@{/blog/amaze/js/html2canvas.min.js}"></script>
 <script th:src="@{/blog/amaze/js/jspdf.min.js}"></script>
 
+var app = new Vue({
+el: '#app',
+data: {
+message: 'Hello Vue!'
+}
+})
 
 </html>

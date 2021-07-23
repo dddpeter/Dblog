@@ -1810,6 +1810,10 @@
    display: block;
    max-width: 100%;
  }
+ .am-article{
+     background-color: #fff;
+     padding-top:2em;
+ }
  /* ==========================================================================
      Component: Comment
    ============================================================================ */
@@ -3750,9 +3754,7 @@
      border: 0 !important;
  }
  .blog-list-li{
-/*     border-top: 0!important;
-     border-bottom: 1px solid #dedede!important;*/
-     padding: 1.5rem 0.8rem !important;
+     padding: 0.2rem 0.2rem !important;
  }
 
 
@@ -3783,17 +3785,6 @@
     border-radius: 0 0  8px 8px;
 }
 
-
- .time {
-   display: -webkit-box;
-   display: -ms-flexbox;
-   display: flex;
-   -webkit-box-align: center;
-   -ms-flex-align: center;
-   align-items: center;
-    flex-direction: column;
- }
- 
  .topic-header .author-lockup a {
    font-size: 16px;
    color: #46466E;
@@ -3832,19 +3823,20 @@
    display: table;
    content: " ";
  }
-
+.blog-cover-image{
+    border: 1px solid #e8eaec;
+    margin-bottom: 16px;
+    height: 100px;
+}
  @media only screen and (max-width: 750px) {
      .blog-cover-image{
-         width: 100%!important;
-         border: 1px dashed #C1C1C1;
-         border-radius:8px;
+        display: none;
+
      }
-     .blog-cover-image:hover{
-         border: 1px solid #C1C1C1;
+     .blog-list-title{
+         padding: 1rem 1rem 0 1rem!important;
      }
-     .blog-created-dates{
-         display: none;
-     }
+
    .author-lockup {
      margin-right: 20px;
    }
@@ -3852,42 +3844,47 @@
      margin-top: 27px;
      line-height: 20px;
    }
-     .blog-created-dates-mobile{
-         border-bottom: 1px solid #dedede;
-         padding: 5px;
-         font-size: 10px;
-         color: #666666;
-         background-color: #FFFFE0;
-     }
 
      .title-link{
-         font-size: 14px;
-         color: #333333;
+         color: #515a6e;
+     }
+     .blog-created-dates{
+         text-align: left;
+     }
+     .blogtags{
+         text-align: left;
      }
  }
+.blog-created-dates,.blogtags{
+    padding: 5px;
+    font-size: 10px;
+    color: rgba(0,0,0,.45);
+    background-color: #f0faff;
+}
+.am-list-news-default{
+    margin: 0!important;
+}
  
  @media only screen and (min-width: 750px) {
      .blog-list-title{
-         height: 70px;
+         padding: 16px 16px 0 16px!important;
+         height: 86px;
      }
-     .blog-cover-image{
-         width: 80%!important;
-         height: 70px;
-         border: 1px dashed #C1C1C1;
-         border-radius:8px;
-     }
-     .blog-cover-image:hover{
-         border: 1px solid #C1C1C1;
-     }
-     .blog-created-dates-mobile{
-         display: none;
-     }
+
      .title-link{
          overflow: hidden;
          white-space: nowrap;
          text-overflow: ellipsis;
-         display: block;width: 100%;
+         display: block;
+         width: 100%;
+         color: #515a6e;
          height: 25px
+     }
+     .blog-created-dates{
+         text-align: right;
+     }
+     .blogtags{
+         text-align: left;
      }
  }
  
