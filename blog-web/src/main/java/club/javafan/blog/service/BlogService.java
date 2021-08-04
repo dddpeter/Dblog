@@ -6,6 +6,7 @@ import club.javafan.blog.common.util.PageQueryUtil;
 import club.javafan.blog.common.util.PageResult;
 import club.javafan.blog.domain.Blog;
 import club.javafan.blog.domain.vo.BlogDetailVO;
+import club.javafan.blog.domain.vo.OsChinaRssVO;
 import club.javafan.blog.domain.vo.SimpleBlogListVO;
 
 import java.util.List;
@@ -19,6 +20,10 @@ public interface BlogService {
     Boolean deleteBatch(Integer[] ids);
 
     int getTotalBlogs();
+    /**
+     *
+     */
+    List<OsChinaRssVO> getRss();
 
     /**
      * 根据id获取详情

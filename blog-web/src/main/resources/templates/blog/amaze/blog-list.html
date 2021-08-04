@@ -2,7 +2,7 @@
 <html  lang="zh-CN"  xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="blog-list-fragment" class="am-u-lg-8 am-u-sm-12  main-content">
 
-    <main class="articles-list">
+    <main class="articles-list" id="main">
         <div class="person-logo">
             <img th:src="@{/blog/amaze/images/website.png}">
         </div>
@@ -32,6 +32,11 @@
                                             <th:block th:text="${blog.blogTitle}"></th:block>
                                         </a>
                                         </h4>
+                                        <div class="am-list-item-text"
+                                             th:text="${blog.abstractContent}"
+                                             style="font-size: 1.5rem;color:rgba(0,0,0,.45);margin-top: 1rem">
+                                            该作者很懒，没有留下摘要！该作者很懒，没有留下摘要！该作者很懒，没有留下摘要！该作者很懒，没有留下摘要！
+                                        </div>
                                     </div>
                                     <div class="am-u-md-3 blog-cover-image" th:style="'background-size:contain; background: url(' + ${blog.blogCoverImage} + ')'" >
                                     </div>
@@ -39,7 +44,7 @@
                                 <li>
                                     <div class="clearfix">
                                         <div class=" am-u-sm-12  am-u-md-6 blogtags">
-                                            <span style="color: rgba(0,0,0,.45);font-size: 12px">文章分类：</span>
+                                            <span style="color: rgba(0,0,0,.45);font-size: 12px">分类：</span>
                                             <a class="am-badge am-badge-success am-round"
                                                th:href="@{'/category/' + ${blog.blogCategoryName}}"
                                                th:text="${blog.blogCategoryName!=null? blog.blogCategoryName:'未设置'}"></a>

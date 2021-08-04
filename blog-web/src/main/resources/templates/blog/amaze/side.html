@@ -1,7 +1,24 @@
 <!DOCTYPE html><!--suppress ALL-->
 <html  lang="zh-CN"  xmlns:th="http://www.thymeleaf.org">
+<style>
+    .index{
+        font-size: 2em;
+    }
+
+</style>
 <div th:fragment="side-fragment"
      class="am-u-lg-4 am-u-sm-12 am-u-lg-offset-0 am-u-sm-offset-0 sidebar-container">
+    <section>
+        <div class="sidebar-list" style="text-align: center">
+            <iframe scrolling="no"
+                    src="https://tianqiapi.com/api.php?style=tw&skin=orange"
+                    frameborder="0"
+                    height="480"
+                    width="100%"
+                    color="388E3C"
+                    allowtransparency="false"></iframe>
+        </div>
+    </section>
     <section>
         <section>
             <div class="sidebar-header">
@@ -47,12 +64,12 @@
                             <li class="sidebar-list-item"><a th:href="@{'/blog/' + ${newBlog.blogId}}"
                                                              class="tag tooltipped tooltipped-n">
                                 <th:block th:if="${newBlogStat.count <= 3}">
-                                    <span  class="am-badge am-badge-warning am-radius index"
+                                    <span  class="am-badge am-badge-warning am-radius index"  
                                           th:text="${newBlogStat.count}"></span>
                                     <span class="title" th:text="${newBlog.blogTitle}"></span>
                                 </th:block>
                                 <th:block th:if="${newBlogStat.count > 3}">
-                                    <span  class="am-badge am-radius index" th:text="${newBlogStat.count}"></span>
+                                    <span  class="am-badge am-radius index"   th:text="${newBlogStat.count}"></span>
                                     <span class="title" th:text="${newBlog.blogTitle}"></span>
                                 </th:block>
                             </a>
@@ -75,18 +92,44 @@
                             <li class="sidebar-list-item"><a class="tag tooltipped tooltipped-n"
                                                              th:href="@{'/blog/' + ${hotBlog.blogId}}">
                                 <th:block th:if="${hotBlogStat.count <= 3}">
-                                    <span  class="am-badge am-badge-warning am-radius index"
+                                    <span  class="am-badge am-badge-warning am-radius index"  
                                           th:text="${hotBlogStat.count}"></span>
                                     <span class="title"
                                         th:text="${hotBlog.blogTitle}"></span>
                                 </th:block>
                                 <th:block th:if="${hotBlogStat.count > 3}">
-                                    <span class="am-badge am-radius index" th:text="${hotBlogStat.count}"></span>
+                                    <span class="am-badge am-radius index"   th:text="${hotBlogStat.count}"></span>
 
                                     <span class="title"
                                         th:text="${hotBlog.blogTitle}"></span>
                                 </th:block>
                             </a></li>
+                        </th:block>
+                    </th:block>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <div class="sidebar-header">
+                <span class="sidebar-header-title">
+                    开源新闻
+                </span>
+            </div>
+            <div class="sidebar-list">
+                <ul class="sidebar-list-body sidebar-list-items am-link-muted">
+                    <th:block th:if="${null != rss}">
+                        <th:block th:each="r,i : ${rss}">
+                            <li class="sidebar-list-item">
+                                <a class="tag tooltipped tooltipped-n"
+                                   target="_blank"
+                                   th:href="@{${r.link}}"
+                                   th:title="${r.description}"
+                                >
+                                    <span class="am-badge am-badge-warning am-radius "
+                                          
+                                          th:text="${i.count}"></span>
+                                    <span  class="title" th:text="${r.title}"></span>
+                                </a></li>
                         </th:block>
                     </th:block>
                 </ul>
@@ -102,19 +145,26 @@
                 <ul class="sidebar-list-body sidebar-list-items am-link-muted">
                     <li class="sidebar-list-item">
                         <span style="font-weight: bold"><i class="am-icon-eye am-icon-fw"></i> 今日访问次数: </span>
-                        <th:block th:text="${configurations.get('indexViewToday')}"></th:block>
+                        <b style=" color: #388E3C;"> <th:block th:text="${configurations.get('indexViewToday')}"></th:block></b>
                     </li>
                     <li class="sidebar-list-item">
                         <span style="font-weight: bold"><i class="am-icon-user am-icon-fw"></i> 总访问次数：</span>
-                        <th:block th:text="${configurations.get('indexViewAll')}"></th:block>
+                        <b style=" color: #388E3C;"><th:block th:text="${configurations.get('indexViewAll')}"></th:block></b>
                     </li>
                     <li class="sidebar-list-item">
                         <span style="font-weight: bold"><i class="am-icon-trophy am-icon-fw"></i> 稳定运行天数：</span>
-                        <th:block th:text="${configurations.get('runDays')}"></th:block>
+                        <b style=" color: #388E3C;"><th:block th:text="${configurations.get('runDays')}"></th:block></b>
                     </li>
                 </ul>
             </div>
         </section>
+
+
     </section>
 </div>
+<script>
+    $(function () {
+
+    });
+</script>
 </html>

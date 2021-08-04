@@ -1,5 +1,6 @@
 package club.javafan.blog.service.impl;
 
+import club.javafan.blog.client.CommonToolClient;
 import club.javafan.blog.common.constant.RedisKeyConstant;
 import club.javafan.blog.common.result.ResponseResult;
 import club.javafan.blog.common.util.*;
@@ -10,20 +11,34 @@ import club.javafan.blog.domain.BlogTagRelation;
 import club.javafan.blog.domain.example.*;
 import club.javafan.blog.domain.vo.BlogDetailVO;
 import club.javafan.blog.domain.vo.BlogListVO;
+import club.javafan.blog.domain.vo.OsChinaRssVO;
 import club.javafan.blog.domain.vo.SimpleBlogListVO;
 import club.javafan.blog.repository.*;
 import club.javafan.blog.service.BlogService;
+import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.google.common.cache.Cache;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
+import org.jsoup.Jsoup;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import javax.annotation.Resource;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -41,6 +56,7 @@ import static org.apache.commons.lang3.math.NumberUtils.*;
  * @desc 博客操作类
  */
 @Service
+@Slf4j
 public class BlogServiceImpl implements BlogService {
 
     @Autowired
@@ -55,6 +71,8 @@ public class BlogServiceImpl implements BlogService {
     private BlogCommentMapper blogCommentMapper;
     @Autowired
     private RedisUtil redisUtil;
+    @Autowired
+    CommonToolClient commonToolClient;
 
     @Resource
     private Cache<String,Object> guavaCache;
@@ -163,6 +181,60 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public int getTotalBlogs() {
         return blogMapper.getTotalBlogs(null);
+    }
+
+    public static void node(NodeList list, List<OsChinaRssVO> l) throws ParseException {
+        StdDateFormat dateFormat = new StdDateFormat();
+        int loop = list.getLength() >=15 ? 15 : list.getLength();
+        for (int i = 0; i <loop ; i++) {
+            Node node = list.item(i);
+            NodeList childNodes = node.getChildNodes();
+            OsChinaRssVO rssVO = new OsChinaRssVO();
+            for (int j = 0; j <childNodes.getLength() ; j++) {
+                if (childNodes.item(j).getNodeType()== Node.ELEMENT_NODE) {
+                    String name = childNodes.item(j).getNodeName();
+                    String value = childNodes.item(j).getFirstChild().getNodeValue();
+                    if("title".equals(name)){
+                        rssVO.setTitle(value);
+                    }
+                    if("link".equals(name)){
+                        rssVO.setLink(value);
+                    }
+                    if("category".equals(name)){
+                        rssVO.setCategory(value);
+                    }
+                    if("description".equals(name)){
+                        rssVO.setDescription(value);
+                    }
+                    if("pubDate".equals(name)){
+                        rssVO.setPubDate( dateFormat.parse(value));
+                    }
+                    if("guid".equals(name)){
+                        rssVO.setGuid(value);
+                    }
+
+                }
+            }
+            l.add(rssVO);
+        }
+    }
+
+    @Override
+    public List<OsChinaRssVO> getRss() {
+        String result = commonToolClient.getOsChinaRss();
+        InputStream in = new BufferedInputStream(
+                new ByteArrayInputStream(result.getBytes(StandardCharsets.UTF_8)));
+        List<OsChinaRssVO> list = new ArrayList<>();
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        try {
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document d = builder.parse(in);
+            NodeList sList = d.getElementsByTagName("item");
+            node(sList,list);
+        } catch (Exception e) {
+           log.error("rss source parse fail.",e);
+        }
+        return list;
     }
 
     @Override
@@ -390,8 +462,10 @@ public class BlogServiceImpl implements BlogService {
                 BeanUtils.copyProperties(blog, blogListVO);
                 //计算摘要 内容大于100的进行截取
                 String abC = blog.getBlogContent();
-                if (isNotEmpty(abC) && abC.length() > 50) {
-                    abC = abC.substring(INTEGER_ZERO, 50);
+                abC = BlogUtils.markDownToHtml(abC);
+                abC = Jsoup.parse(abC).text();
+                if (isNotEmpty(abC) && abC.length() > 150) {
+                    abC = abC.substring(INTEGER_ZERO, 150);
                 }
                 blogListVO.setAbstractContent(abC);
                 boolean b = finalBlogCategoryMap.containsKey(blog.getBlogCategoryId());

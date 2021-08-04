@@ -2933,7 +2933,7 @@
  .sidebar-container .sidebar-header {
    position: relative;
    padding-bottom: 13px;
-   padding-top: 40px;
+   padding-top: 30px;
    margin-left: 0px;
  }
  
@@ -2947,7 +2947,7 @@
  .sidebar-header .sidebar-header-title {
    font-size: 1.25em;
    font-weight: bold;
-   color: rgba(0, 0, 0, 0.8);
+   color: #388E3C;
    height: 22px;
    vertical-align: top;
  }
@@ -3057,7 +3057,7 @@
    background:  #388E3C;
    content: '';
  }
- 
+
  /*
  Please note this CSS is currently in   prototype form. We'll implement a cleaned up version in Web Starter Kit.
  */
@@ -3825,7 +3825,8 @@
  }
 .blog-cover-image{
     border: 1px solid #e8eaec;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
+    margin-top: 8px;
     height: 100px;
 }
  @media only screen and (max-width: 750px) {
@@ -3846,7 +3847,7 @@
    }
 
      .title-link{
-         color: #515a6e;
+         color: #333;
      }
      .blog-created-dates{
          text-align: left;
@@ -3877,7 +3878,7 @@
          text-overflow: ellipsis;
          display: block;
          width: 100%;
-         color: #515a6e;
+         color: #333;
          height: 25px
      }
      .blog-created-dates{

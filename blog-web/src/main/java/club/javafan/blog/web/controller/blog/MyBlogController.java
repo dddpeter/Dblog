@@ -76,7 +76,7 @@ public class MyBlogController {
      * @return
      */
     @GetMapping({"/page/{pageNum}"})
-    public ModelAndView page(@PathVariable("pageNum") int pageNum, @RequestParam(defaultValue = "15") Integer pageSize) throws Exception {
+    public ModelAndView page(@PathVariable("pageNum") int pageNum, @RequestParam(defaultValue = "20") Integer pageSize) throws Exception {
         PageResult blogPageResult = blogService.getBlogsForIndexPage(pageNum, pageSize);
         ModelAndView modelAndView = new ModelAndView("blog/amaze/index");
         if (isNull(blogPageResult)) {
@@ -90,6 +90,7 @@ public class MyBlogController {
         modelAndView.addObject("categories", categoryService.getAllCategories());
         modelAndView.addObject("hotTags", tagService.getBlogTagCountForIndex());
         modelAndView.addObject("pageName", "首页");
+        modelAndView.addObject("rss",blogService.getRss());
         modelAndView.addObject("configurations", configService.getAllConfigs());
         return modelAndView;
     }
