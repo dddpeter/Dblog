@@ -9,11 +9,23 @@
 <link rel="stylesheet" th:href="@{blog/amaze/css/productionPhoto.css}" type="text/css" media="screen"/>
 <!--PRINT CSS-->
 <link rel="stylesheet" th:href="@{blog/amaze/css/print.css}" type="text/css" media="print"/>
+<style>
+    .item-details{
+        font-size: 13px;
+    }
+    .item-details>li{
+        margin-bottom: 5px!important;
+    }
+    .sectionHead{
+        margin-top: 1.5rem!important;
+        margin-bottom: 1.5rem!important;
+    }
+</style>
 <body>
 <div th:replace="blog/amaze/header::header-fragment"></div>
 
 <div class="container" style="position:relative;margin-top: 2rem;">
-    <div id="wrapper">
+    <div id="wrapper" style="margin: 0">
         <!--INTRODUCE NAME-->
         <h2 id="titleName" class="sectionHead">联系方式</h2>
         <!--BASE INFORMATION-->
@@ -72,10 +84,19 @@
                     <h4 class="resume-item-title-2">架构师</h4>
                     <h5 class="resume-item-date">2018.04 - 至今</h5>
                 </div>
-                <p>
-                    1. 负责公司项目架构设计，系统改进，性能优化<br/>
-                    2. 推动公司技术改革升级
-                </p>
+               <ol class="item-details">
+                   <li>新核心测试和生产环境运维。</li>
+                   <li>敏捷及DevOps开发模式研究实践。</li>
+                   <li>容器技术实践推广。</li>
+                   <li>基础架构运维技术指导。</li>
+                   <li>生产线基础软件运维工作。</li>
+                   <li>软件系统配置管理工作。</li>
+                   <li>负责公司系统的架构设计、研发工作。</li>
+                   <li>负责辅助并指导系统分析开展设计工作。</li>
+                   <li>技术研究，样板代码编写和技术攻关工作。</li>
+                   <li>管理技术支撑团队并给项目、产品开发实施团队提供技术保障。</li>
+                   <li>与各项目开发组进行技术交流，指导日常开发工作。</li>
+               </ol>
             </li>
             <li>
                 <div class="details">
@@ -83,7 +104,13 @@
                     <h4 class="resume-item-title-2">前端开发/DBA</h4>
                     <h5  class="resume-item-date">2016.10 - 2018.4</h5>
                 </div>
-                <p>前端开发人员指导培训，前端开发，数据库管理员</p>
+                <ol class="item-details">
+                    <li>前端开发人员培训，前端新技术研究与实践。</li>
+                    <li>前端项目版本管理，代码优化，前端开发小组管理，前端代码review工作</li>
+                    <li>MySQL, PostgreSQL, Oracle以及MongoDB数据库安装配置，性能分析，参数调优 ,运行监控，备份策略设置，数据迁移</li>
+                    <li>项目数据库选型，项目组数据库技术支持</li>
+                    <li>数据库使用办法编写，数据安全性保障文档编写,数据使用规范制定</li>
+                </ol>
             </li>
             <li>
                 <div class="details">
@@ -91,11 +118,13 @@
                     <h4 class="resume-item-title-2">前端组长</h4>
                     <h5  class="resume-item-date">2015.11 - 2016.10</h5>
                 </div>
-                <p>1. 参与公司各项目中的Web前端功能设计、开发；
-                    2. 使用Web前端技术，创建用户友好、符合标准、跨平台及跨浏览器的应用，促进产品易用性改进和界面技术优化；
-                    3. 与后端开发人员配合，高质量完成网站前端开发工作；
-                    4. Web前沿技术洞察、跟进。
-                    5. 外包团队管理
+                <ol class="item-details">
+                    <li> 参与公司各项目中的Web前端功能设计、开发；</li>
+                    <li> 使用Web前端技术，创建用户友好、符合标准、跨平台及跨浏览器的应用，促进产品易用性改进和界面技术优化；</li>
+                    <li> 与后端开发人员配合，高质量完成网站前端开发工作；</li>
+                    <li> Web前沿技术洞察、跟进。</li>
+                    <li> 外包团队管理</li>
+                </ol>
             </li>
             <li class="last-li">
                 <div class="details">
@@ -103,13 +132,14 @@
                     <h4  class="resume-item-title-2">DBA</h4>
                     <h5  class="resume-item-date">2009.11 - 2015.11</h5>
                 </div>
-                <p>1、安全监控
-                    2、数据库备份管理
-                    3、数据库性能优化
-                    4、权限分配与管理
-                    5、数据库技术支持
-                    6、中间件及操作系统支持
-                    7、新系统架构研究</p>
+                <ol class="item-details">
+                    <li> Oracle数据库新环境安装配置，数据库监控，DataGurd配置，备份管理，存储管理，权限分配，SQL优化工作。</li>
+                    <li> 核心业务系统各版本发布上线工作。</li>
+                    <li> WebLogic、MySQL数据库、版本管理、负载均衡等软件安装配置和操作系统优化工作。</li>
+                    <li> IT技术研究应用工作（Zabbix， MySQL高可用，Weblogic集群，elasticsearch，MQ，Resis）</li>
+                    <li> 项目推进协调工作。</li>
+                    <li>新系统架构研究</li>
+                </ol>
             </li>
         </ul>
         <!--END EXPERIENCE-->
@@ -145,7 +175,11 @@
                     <h4  class="resume-item-title-2">VUE/Spring Cloud/Nacos</h4>
                     <h5  class="resume-item-date">2019.10 - 2021.3</h5>
                 </div>
-                <p>这个项目主要是整合保险公司互联网通用服务，减少不同项目功能重复建设，打通竖井项目，目前已经上线商务智能中心，收付中心，Spring Cloud建设微服务，项目中主要承担项目组长，架构设计角色</p>
+                <ol class="item-details">
+                    <li>这个项目主要是整合保险公司互联网通用服务，减少不同项目功能重复建设，打通竖井项目</li>
+                    <li>目前已经上线商务智能中心，收付中心，Spring Cloud建设微服务</li>
+                    <li>项目中主要承担项目组长，架构师角色</li>
+                </ol>
             </li>
             <li>
                 <div class="details">
@@ -153,7 +187,11 @@
                     <h4  class="resume-item-title-2">ElementUI/Spring Cloud/Mybatis</h4>
                     <h5  class="resume-item-date">2018.4 - 至今</h5>
                 </div>
-                <p>这个项目是将寿险公司传统核心，改造为云原生，分布式，微服务架构，前后端分离，可以快速需求迭代的新一代核心系统，目前有很多保险公司正在进行研发，项目中主要承担架构设计，疑难问题解决，CI/CD流程设计，Devops实践</p>
+                <ol class="item-details">
+                    <li>这个项目是将寿险公司传统核心，改造为云原生，分布式，微服务架构，前后端分离</li>
+                    <li>目前有很多保险公司正在进行研发，可以快速需求迭代的新一代核心系统</li>
+                    <li>项目中主要承担架构设计，疑难问题解决，CI/CD流程设计，DevOps方式研发指导</li>
+                </ol>
             </li>
             <li>
                 <div class="details">
@@ -161,7 +199,11 @@
                     <h4  class="resume-item-title-2">Angular.js/Spring/Mybatis</h4>
                     <h5  class="resume-item-date">2015.10 - 2016.11</h5>
                 </div>
-                <p>这个项目是综合电商平台系统，我在项目中主要承担前端开发小组长角色，主要使用Angular.js,gulp,h5</p>
+                <ol class="item-details">
+                    <li>这个项目是综合电商平台系统，我在项目中主要承担前端开发小组长角色</li>
+                    <li>技术主要使用Angular.js,gulp,h5</li>
+                    <li>系统主要分三块：保险商城，理财产品商城，非金融实物商城</li>
+                </ol>
             </li>
             <li class="last-li">
                 <div class="details">
@@ -169,10 +211,11 @@
                     <h4  class="resume-item-title-2">JSP/Oracle/J2EE/XSLT</h4>
                     <h5  class="resume-item-date">2010.7-2012.4</h5>
                 </div>
-                <p>1.银保通，一种用于在银行和保险公司之间进行实时联机交易的应用系统。<br/>
-                    2.银保通系统按照功能划分，包括通讯模块，数据处理模块，交易处理模块和日志记录模块。<br/>
-                    3.系统可以支持几乎所有不同银行的交易报文，可扩展性良好。<br/>
-                    </p>
+                <ol class="item-details">
+                    <li>银保通，一种用于在银行和保险公司之间进行实时联机交易的应用系统。</li>
+                    <li>银保通系统按照功能划分，包括通讯模块，数据处理模块，交易处理模块和日志记录模块。</li>
+                    <li>系统可以支持几乎所有不同银行的交易报文，可扩展性良好。</li>
+                </ol>
             </li>
         </ul>
         <!--END PROJECT-->

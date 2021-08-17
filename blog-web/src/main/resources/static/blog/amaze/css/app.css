@@ -538,7 +538,7 @@ ul{
     background-color:	#FFFFE0 ;
     border: 1px dashed #C1C1C1;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 13px;
 }
 .concat > li {
     padding: 5px;
@@ -552,13 +552,13 @@ ul{
 .radius-li{
     border-radius: 8px;
 }
-#jobs li,#schools li,#project li {
+#jobs>li,#schools>li,#project>li {
     margin-bottom: 0!important;
     padding: 8px;
     background-color:	#FFFFE0 ;
     border: 1px dashed #C1C1C1;
 }
-#jobs li:after ,#schools li:after ,#project li:after {
+#jobs>li:after ,#schools>li:after ,#project>li:after {
     clear: both;
     content:".";
     display:block;
