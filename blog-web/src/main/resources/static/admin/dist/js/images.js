@@ -5,8 +5,9 @@ $(function () {
         colModel: [
             {label: 'id', name: 'id', index: 'id', width: 50, key: true, hidden: true},
             {label: '存储路径', name: 'imagePath', index: 'imagePath'},
-            {label: '缩略图', name: 'imageUrl', index: 'imageUrl', width: 90, formatter: coverImageFormatter},
-            {label: '添加时间', name: 'createdTime', index: 'createdTime', width: 90}
+            {label: '链接地址', name: 'imageUrl', index: 'imageUrl',formatter: formatUrl},
+            {label: '缩略图', name: 'imageUrl', index: 'imageUrlBrief', width: 90, formatter: coverImageFormatter},
+            {label: '添加时间', name: 'createdTime', index: 'createdTime', width: 90,formatter: formatDate}
         ],
         rowNum: 10,
         height: 800,
@@ -42,6 +43,12 @@ $(function () {
 
     function coverImageFormatter(cellvalue) {
         return "<img src='" + cellvalue + "' height=\"120\" width=\"160\" alt='coverImage'/>";
+    }
+    function formatDate(cellvalue){
+        return moment(cellvalue).format('YYYY-MM-DD HH:mm:ss');
+    }
+    function formatUrl(cellvalue){
+        return "<a href='" + cellvalue + "' target='_blank' >" + cellvalue + "</a>";
     }
 
 

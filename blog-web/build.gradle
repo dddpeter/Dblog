@@ -3,58 +3,58 @@
  */
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
-//apply plugin: "org.gradlewebtools.minify"
-
+configurations {
+    implementation.exclude module: "spring-boot-starter-tomcat"
+}
 dependencies {
     implementation 'com.github.penggle:kaptcha:2.3.2'
-    implementation 'org.springframework.boot:spring-boot-starter-aop:2.4.4'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.10.1'
-    implementation 'org.aspectj:aspectjrt:1.9.6'
-    implementation 'org.aspectj:aspectjweaver:1.9.6'
+    implementation 'org.springframework.boot:spring-boot-starter-aop:2.5.6'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator:2.5.6'
+    implementation 'org.aspectj:aspectjrt:1.9.7'
+    implementation 'org.aspectj:aspectjweaver:1.9.7'
     implementation 'org.apache.commons:commons-collections4:4.4'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.4.4'
-    implementation 'org.springframework.session:spring-session-core:2.4.2'
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.4.4'
-    implementation 'com.tencentcloudapi:scf-java-events:0.0.3'
-    implementation 'com.alibaba:fastjson:1.2.73'
-    implementation 'mysql:mysql-connector-java:8.0.18'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.1'
-    implementation 'org.springframework.boot:spring-boot:2.4.4'
-    implementation 'com.baomidou:mybatis-plus-boot-starter:3.4.2'
-    implementation 'dom4j:dom4j:1.6.1'
-    implementation 'com.thoughtworks.xstream:xstream:1.4.9'
-    implementation ('com.baidu.aip:java-sdk:4.15.4')
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.5.6'
+    implementation 'org.springframework.session:spring-session-core:2.5.3'
+    implementation ('org.springframework.boot:spring-boot-starter-web:2.5.6')
+    implementation 'net.sourceforge.nekohtml:nekohtml:1.9.22'
+    implementation 'org.springframework.boot:spring-boot-starter-undertow:2.5.6'
+    implementation 'com.tencentcloudapi:scf-java-events:0.0.4'
+    implementation 'com.alibaba:fastjson:1.2.78'
+    implementation 'mysql:mysql-connector-java:8.0.25'
+    implementation 'org.springframework.boot:spring-boot:2.5.6'
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.4.3.4'
+    implementation 'com.github.xiaoymin:knife4j-spring-boot-starter:3.0.3'
+    implementation 'dom4j:dom4j:20040902.021138'
+    implementation 'com.thoughtworks.xstream:xstream:1.4.18'
+    implementation ('com.baidu.aip:java-sdk:4.16.2')
     {
         exclude group : "org.slf4j"  , module: "slf4j-simple"
     }
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis:2.4.4'
-    implementation 'org.apache.commons:commons-pool2:2.9.0'
-    implementation 'com.atlassian.commonmark:commonmark:0.10.0'
-    implementation 'org.apache.commons:commons-lang3:3.11'
-    implementation 'com.atlassian.commonmark:commonmark-ext-gfm-tables:0.10.0'
-    implementation 'org.springframework.boot:spring-boot-starter-mail:2.4.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis:2.5.6'
+    implementation 'org.apache.commons:commons-pool2:2.10.0'
+    implementation 'com.atlassian.commonmark:commonmark:0.17.0'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'com.atlassian.commonmark:commonmark-ext-gfm-tables:0.17.0'
+    implementation 'org.springframework.boot:spring-boot-starter-mail:2.5.6'
     implementation 'org.apache.commons:commons-collections4:4.4'
-    implementation 'com.alibaba:fastjson:1.2.62'
-    implementation 'org.apache.tomcat.embed:tomcat-embed-core:9.0.35'
-    implementation 'org.apache.httpcomponents:httpclient:4.5.11'
-    implementation 'com.google.guava:guava:28.2-jre'
-    implementation 'org.springframework.boot:spring-boot-starter-cache:2.4.4'
+    implementation 'com.alibaba:fastjson:1.2.78'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+    implementation 'com.google.guava:guava:31.0.1-jre'
+    implementation 'org.springframework.boot:spring-boot-starter-cache:2.5.6'
     implementation group: 'com.vladsch.flexmark', name: 'flexmark', version: '0.62.2'
     implementation group: 'com.vladsch.flexmark', name: 'flexmark-util', version: '0.62.2'
     implementation group: 'com.vladsch.flexmark', name: 'flexmark-ext-tables', version: '0.62.2'
     implementation group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
     implementation group: 'com.rometools', name: 'rome', version: '1.16.0'
-    implementation  'org.projectlombok:lombok:1.18.18'
-    annotationProcessor  'org.projectlombok:lombok:1.18.18'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.4.4'
-    compile fileTree(dir: 'libs', include: [ '*.jar'])
-    implementation group: 'com.dtflys.forest', name: 'forest-spring-boot-starter', version: '1.5.0'
-    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    implementation 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    testImplementation ('org.springframework.boot:spring-boot-starter-test:2.5.6'){
+        exclude group:'log4j' ,module:'log4j'
+    }
+    implementation "log4j:log4j:1.2.17"
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.5.6'
 
 
-}
-bootJar{
-    archiveVersion = '0.0.1-SNAPSHOT'
 }
 
 description = 'blog-web'

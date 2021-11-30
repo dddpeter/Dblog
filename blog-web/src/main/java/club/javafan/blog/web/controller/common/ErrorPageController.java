@@ -1,6 +1,7 @@
 package club.javafan.blog.web.controller.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
@@ -55,7 +56,6 @@ public class ErrorPageController implements ErrorController {
         return new ResponseEntity<>(body, status);
     }
 
-    @Override
     public String getErrorPath() {
         return ERROR_PATH;
     }
@@ -66,12 +66,16 @@ public class ErrorPageController implements ErrorController {
         if (parameter == null) {
             return false;
         }
-        return !"false".equals(parameter.toLowerCase());
+        return !"false".equalsIgnoreCase(parameter);
     }
 
     protected Map<String, Object> getErrorAttributes(HttpServletRequest request, boolean includeStackTrace) {
         WebRequest webRequest = new ServletWebRequest(request);
-        return this.errorAttributes.getErrorAttributes(webRequest, includeStackTrace);
+        ErrorAttributeOptions options = ErrorAttributeOptions.defaults();
+        if(includeStackTrace){
+            options.including(ErrorAttributeOptions.Include.STACK_TRACE);
+        }
+        return this.errorAttributes.getErrorAttributes(webRequest, options);
     }
 
     private HttpStatus getStatus(HttpServletRequest request) {

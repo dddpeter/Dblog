@@ -1,37 +1,38 @@
+
 spring:
   #设置redis
   #设置连接池
   datasource:
     #配置多数据源 下面是我本地的数据url
     slave:
-      jdbc-url: jdbc:mysql://127.0.0.1:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
-      username: dddpeter
-      password: hqins@66
+      jdbc-url: jdbc:mysql://localhost:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC
+      username: app
+      password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.zaxxer.hikari.HikariDataSource
       hikari:
         minimum-idle: 5
         max-lifetime: 1800000
-        connection-timeout: 3000
+        connection-timeout: 30000
         auto-commit: true
         pool-name: DatebookHikariCP
         maximum-pool-size: 15
         connection-test-query: SELECT 1
     master:
-      jdbc-url: jdbc:mysql://127.0.0.1:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
-      username: dddpeter
-      password: hqins@66
+      jdbc-url: jdbc:mysql://localhost:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC
+      username: app
+      password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.zaxxer.hikari.HikariDataSource
       hikari:
         minimum-idle: 5
         max-lifetime: 1800000
-        connection-timeout: 3000
+        connection-timeout: 30000
         auto-commit: true
         pool-name: DatabllkHikariCP
         maximum-pool-size: 15
         connection-test-query: SELECT 1
-  #redis
+    #redis
   redis:
     # Redis数据库索引（默认为0）
     database: 0
@@ -40,7 +41,7 @@ spring:
     # Redis服务器连接端口
     port: 6379
     # Redis服务器连接密码（默认为空）如果没有配置密码就不要写这个属性了
-#    password: hqins@66
+    # password: hqins@66
     #连接池
     lettuce:
       pool:
@@ -57,12 +58,12 @@ spring:
   cache:
     redis:
       time-to-live: 30000
-  #邮件发送设置
+    #邮件发送设置
   mail:
     default-encoding: utf-8
-    #收件人
+      #收件人
     to: dddpeter@126.com
-    #抄送列表 ,分隔
+      #抄送列表 ,分隔
     cc: dddpeter@aliyun.com
     subject: 博客日报 #博客主题
     host: smtp.126.com
@@ -75,16 +76,18 @@ spring:
       mail.smtp.socketFactory.port: 465
 
 
-#文件上传路径
+  #文件上传路径
 file:
   file-path: /opt/deploy/upload/
 logging:
   level:
     #设置项目的日志打印级别 map类型 root为全路径  后面为级别
-    root: warn
-    club.javafan.blog: ${LOGGING_LEVEL:warn}
-    org.springframework.web: info
+    root: info
+    club.javafan.blog: debug
+    org.springframework.web: debug
 baidu:
   appId: 23916718
   appKey: GeKMqkqPdxpfnktWML8cIQOA
   appSecret: TTWXOxGSaUW2Griq769gVGK4fbxGlUsS
+server:
+  port: 8100

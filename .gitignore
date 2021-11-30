@@ -19,3 +19,4 @@ package-lock.json
 **/build/
 .DS_Store
 opt/
+gradle/

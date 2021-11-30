@@ -59,19 +59,19 @@ import static org.apache.commons.lang3.math.NumberUtils.*;
 @Slf4j
 public class BlogServiceImpl implements BlogService {
 
-    @Autowired
+    @Resource
     private BlogMapper blogMapper;
-    @Autowired
+    @Resource
     private BlogCategoryMapper categoryMapper;
-    @Autowired
+    @Resource
     private BlogTagMapper tagMapper;
-    @Autowired
+    @Resource
     private BlogTagRelationMapper blogTagRelationMapper;
-    @Autowired
+    @Resource
     private BlogCommentMapper blogCommentMapper;
-    @Autowired
+    @Resource
     private RedisUtil redisUtil;
-    @Autowired
+    @Resource
     CommonToolClient commonToolClient;
 
     @Resource
@@ -221,19 +221,26 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public List<OsChinaRssVO> getRss() {
-        String result = commonToolClient.getOsChinaRss();
-        InputStream in = new BufferedInputStream(
-                new ByteArrayInputStream(result.getBytes(StandardCharsets.UTF_8)));
+        String result ;
         List<OsChinaRssVO> list = new ArrayList<>();
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document d = builder.parse(in);
-            NodeList sList = d.getElementsByTagName("item");
-            node(sList,list);
+            result = commonToolClient.getOsChinaRss();
+            InputStream in = new BufferedInputStream(
+                    new ByteArrayInputStream(result.getBytes(StandardCharsets.UTF_8)));
+
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            try {
+                DocumentBuilder builder = factory.newDocumentBuilder();
+                Document d = builder.parse(in);
+                NodeList sList = d.getElementsByTagName("item");
+                node(sList,list);
+            } catch (Exception e) {
+                log.error("rss source parse fail.",e);
+            }
         } catch (Exception e) {
-           log.error("rss source parse fail.",e);
+            log.error("fail",e);
         }
+
         return list;
     }
 

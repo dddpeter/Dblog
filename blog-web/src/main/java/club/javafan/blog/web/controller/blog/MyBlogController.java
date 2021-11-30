@@ -360,7 +360,7 @@ public class MyBlogController {
      *
      * @return
      */
-    @GetMapping({"/{subUrl}"})
+    @GetMapping({"/{subUrl:^.*(?!doc/.html)}"})
     public ModelAndView detail(@PathVariable("subUrl") String subUrl) throws Exception {
         ModelAndView modelAndView = new ModelAndView("blog/amaze/detail");
         BlogDetailVO blogDetailVO = blogService.getBlogDetailBySubUrl(subUrl);

@@ -3,6 +3,7 @@ package club.javafan.blog.web.aop;
 import club.javafan.blog.common.mail.MailService;
 import club.javafan.blog.common.util.RedisUtil;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -103,7 +104,8 @@ public class LoggerExceptionAop {
                 .filter(arg -> (!(arg instanceof HttpServletRequest) && !(arg instanceof HttpServletResponse))
                         && !(arg instanceof MultipartFile))
                 .collect(Collectors.toList());
-        log.append(JSONObject.toJSONString(logArgs));
+
+        log.append(JSONObject.toJSONString(logArgs, SerializerFeature.IgnoreNonFieldGetter));
         return log.toString();
     }
 
