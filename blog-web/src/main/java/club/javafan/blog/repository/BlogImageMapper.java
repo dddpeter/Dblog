@@ -2,7 +2,6 @@ package club.javafan.blog.repository;
 
 import club.javafan.blog.common.annotation.Slave;
 import club.javafan.blog.common.util.PageQueryUtil;
-import club.javafan.blog.domain.Blog;
 import club.javafan.blog.domain.BlogImage;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;

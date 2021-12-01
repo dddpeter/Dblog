@@ -5,7 +5,7 @@ import javax.mail.MessagingException;
 /**
  * 邮件服务
  *
- * @author 敲代码的长腿毛欧巴
+ * @author dddpeter
  * @createDate 2020/2/2
  */
 public interface MailService {

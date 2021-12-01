@@ -22,7 +22,6 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.jsoup.Jsoup;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -51,7 +50,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 import static org.apache.commons.lang3.math.NumberUtils.*;
 
 /**
- * @author 敲代码的长腿毛欧巴(博客)
+ * @author c
  * @date 2019/12/25 21:06
  * @desc 博客操作类
  */
@@ -435,7 +434,7 @@ public class BlogServiceImpl implements BlogService {
             }
             //分类信息
             blogDetailVO.setBlogCategoryIcon(blogCategory.getCategoryIcon());
-            if (!StringUtils.isEmpty(blog.getBlogTags())) {
+            if (!StringUtils.hasLength(blog.getBlogTags())) {
                 //标签设置
                 List<String> tags = Arrays.asList(blog.getBlogTags().split(","));
                 blogDetailVO.setBlogTags(tags);

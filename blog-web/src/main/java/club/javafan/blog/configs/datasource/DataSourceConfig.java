@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
 /**
- * @author 敲代码的长腿毛欧巴(博客)
+ * @author dddpeter(博客)
  * @date 2019/12/8 9:18
  * @desc 数据源配置
  */

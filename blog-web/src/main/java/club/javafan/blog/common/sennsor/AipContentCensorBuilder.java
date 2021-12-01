@@ -4,7 +4,6 @@ import com.baidu.aip.contentcensor.AipContentCensor;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -16,7 +15,7 @@ import static org.apache.commons.lang3.math.NumberUtils.INTEGER_ZERO;
 /**
  * 文本审核单例
  *
- * @author 敲代码的长腿毛欧巴
+ * @author dddpeter
  * @createDate 2020/2/2
  */
 @Component(value = "aipContentCensorBuilder")

@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * redis工具类
  *
- * @author 敲代码的长腿毛欧巴
+ * @author dddpeter
  * @createDate 2019/12/31
  */
 @Component

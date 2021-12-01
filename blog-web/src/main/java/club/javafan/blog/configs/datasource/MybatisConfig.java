@@ -29,7 +29,7 @@ import static club.javafan.blog.domain.enums.DataSourceEnum.SLAVE;
 
 
 /**
- * @author 敲代码的长腿毛欧巴(博客)
+ * @author dddpeter(博客)
  * @date 2019/12/8 9:46
  * @desc 设置数据源
  */

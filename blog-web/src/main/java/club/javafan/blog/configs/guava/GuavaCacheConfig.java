@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Guva配置类
- * @author 敲代码的长腿毛欧巴
+ * @author dddpeter
  * @createDate 2020/3/6
 */
 @Configuration

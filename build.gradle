@@ -3,7 +3,8 @@ buildscript {
     repositories {
         maven {
             allowInsecureProtocol = true
-            url "http://mirrors.cloud.tencent.com/nexus/repository/maven-public/"}
+            url "http://mirrors.cloud.tencent.com/nexus/repository/maven-public/"
+        }
         mavenCentral()
         maven { url "https://jitpack.io" }
         maven {
@@ -25,7 +26,8 @@ allprojects {
     repositories {
         maven {
             allowInsecureProtocol = true
-            url "http://mirrors.cloud.tencent.com/nexus/repository/maven-public/"}
+            url "http://mirrors.cloud.tencent.com/nexus/repository/maven-public/"
+        }
         mavenCentral()
         maven { url "https://jitpack.io" }
         maven {

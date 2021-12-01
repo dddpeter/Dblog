@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 import static java.util.Objects.isNull;
 
 /**
- * @author 敲代码的长腿毛欧巴(博客)
+ * @author dddpeter(博客)
  * @date 2019/12/28 21:30
  * @desc 友情链接设置
  */

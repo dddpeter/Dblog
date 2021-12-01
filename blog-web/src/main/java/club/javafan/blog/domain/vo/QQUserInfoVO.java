@@ -3,7 +3,7 @@ package club.javafan.blog.domain.vo;
 import lombok.Data;
 
 /**
- * @author 敲代码的长腿毛欧巴
+ * @author dddpeter
  * @date 2020/3/4
  */
 @Data

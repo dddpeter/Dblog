@@ -17,7 +17,7 @@ import javax.mail.internet.MimeMessage;
 import java.io.File;
 
 /**
- * @author 敲代码的长腿毛欧巴
+ * @author dddpeter
  * @date 2020/1/30
  * 邮件发送类
  */

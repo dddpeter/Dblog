@@ -8,12 +8,11 @@ import com.vladsch.flexmark.util.ast.Node;
 import com.vladsch.flexmark.util.data.MutableDataSet;
 import com.vladsch.flexmark.util.misc.Extension;
 
-
 import java.net.URI;
 import java.util.Arrays;
 
 /**
- * @author 敲代码的长腿毛欧巴(博客)
+ * @author dddpeter(博客)
  * @date 2019/12/28 20:52
  * @desc 博客工具类
  */
