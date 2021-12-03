@@ -2,6 +2,7 @@ package club.javafan.blog.domain;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +14,8 @@ import java.time.LocalDateTime;
 @Builder
 public class BlogImage {
 
-    private long id;
+    @TableId
+    private Long id;
     private String imagePath;
     private String imageUrl;
     @TableField(fill = FieldFill.INSERT)

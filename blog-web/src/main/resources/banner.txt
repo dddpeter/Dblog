@@ -1,0 +1,13 @@
+ ${AnsiColor.BRIGHT_GREEN}
+ ______   ______   _        _______  _______
+(  __  \ (  ___ \ ( \      (  ___  )(  ____ \
+| (  \  )| (   ) )| (      | (   ) || (    \/
+| |   ) || (__/ / | |      | |   | || |
+| |   | ||  __ (  | |      | |   | || | ____
+| |   ) || (  \ \ | |      | |   | || | \_  )
+| (__/  )| )___) )| (____/\| (___) || (___) |
+(______/ |/ \___/ (_______/(_______)(_______)
+ ${AnsiColor.CYAN}
+Spring Boot ${spring-boot.formatted-version}
+DBlog v${blog.version}  by ${blog.author} at ${blog.run.date}
+ ${AnsiColor.BRIGHT_WHITE}

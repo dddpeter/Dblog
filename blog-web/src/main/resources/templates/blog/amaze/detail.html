@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--suppress ALL-->
-<html  lang="zh-CN"  xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="blog/amaze/header::head-fragment">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
 </head>
@@ -21,10 +21,10 @@
             </p>
             <div>
                 <th:block th:each="tag : ${blogDetailVO.blogTags}">
-                                <a class="am-badge am-badge-success"
-                                   th:href="@{'/tag/' + ${tag}}">
-                                    <th:block th:text="${tag}"></th:block>
-                                </a>
+                    <a class="am-badge am-badge-success"
+                       th:href="@{'/tag/' + ${tag}}">
+                        <th:block th:text="${tag}"></th:block>
+                    </a>
                 </th:block>
             </div>
         </div>
@@ -40,9 +40,9 @@
 
 
             <th:block th:utext="${blogDetailVO.blogContent}"/>
-            <div id="doc-qrcode" class="am-text-center" style="padding: 2rem 0" ></div>
+            <div class="am-text-center" id="doc-qrcode" style="padding: 2rem 0"></div>
             <style>
-                #doc-qrcode img{
+                #doc-qrcode img {
                     margin: 0 auto;
                 }
             </style>
@@ -111,51 +111,75 @@
     </aside>
     <th:block th:if="${blogDetailVO.enableComment==0}">
         <aside class="create-comment" id="create-comment">
-            <h2><i class="fa fa-pencil"></i> 添加评论</h2>
-
-            <div id="commentForm" class="form" style="width:auto; margin:0 auto; text-align: center;">
+            <div class="form" id="commentForm" >
+                <h2><i class="fa fa-pencil fa-lg" style="font-size: 1.7em"></i> 添加评论</h2>
                 <input type="hidden" id="blogId" name="blogId" th:value="${blogDetailVO.blogId}"></input>
+                <div class="am-g" style="padding: 6px">
+                    <div class="am-u-sm-12 am-u-md-4 am-u-lg-4" style="background-color: #FFFFE0;border-radius: 5px 5px;border: 1px dashed #C1C1C1;padding-bottom: 8px;padding-top: 8px;">
+                        <!--横向表单-->
+                        <div class="am-form" role="form">
+                            <!--头像-->
+                            <div class="am-form-group" style="text-align: center">
+                                <img class="am-img-thumbnail" id="idPic" src="/blog/default/img/avatar.png"
+                                     style="width:50px; border-radius: 25px;">
+                            </div>
+                            <!--QQ号-->
+                            <div class="am-form-group">
+                                <input class="am-form-field" id="qqNum" onmouseout="qqfun()" placeholder="QQ号"
+                                       type="text">
+                            </div>
+                            <!--昵称-->
+                            <div class="am-form-group">
+                                <input class="am-form-field" id="commentator" placeholder="QQ昵称" type="text">
+                            </div>
+                            <!--邮箱-->
+                            <div class="am-form-group">
+                                <input class="am-form-field" id="email" placeholder="电子邮箱" type="text">
+                            </div>
+                        </div>
+                        <div>
+                            <!--网站地址-->
+                            <input id="websiteUrl" name="websiteUrl" placeholder="你的网站地址(可不填)"
+                                   type="text">
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-8 am-u-lg-8 am-form">
+                        <!--评论-->
+                    <textarea id="commentBody" name="commentBody" placeholder="请输入您的评论"
+                              rows="7" ></textarea>
+                        <div  class="verif-div am-form am-g">
+                            <!--图片验证-->
+                            <div class="am-u-sm-6 am-u-md-8 am-u-lg-8">
+                            <input  id="verifyCode" name="verifyCode" placeholder="Verification Code"
+                                   type="text">
+                            </div>
+                            <div class="am-u-sm-6 am-u-md-4 am-u-lg-4">
+                            <img alt="单击图片刷新！" class="pointer" onclick="this.src='/common/kaptcha?d='+new Date()*1"
+                                 th:src="@{/common/kaptcha}">
+                            </div>
+                        </div>
+                    </div>
 
-                <!--横向表单-->
-                <div class="am-form-inline" role="form" style="display: inline-block;">
-                    <!--头像-->
-                    <div class="am-form-group">
-                        <img id="idPic" class="am-img-thumbnail" src="/blog/default/img/avatar.png"
-                             style="width:60%; border-radius: 50%;">
-                    </div>
-                    <!--QQ号-->
-                    <div class="am-form-group">
-                        <input id="qqNum" type="text" class="am-form-field" placeholder="QQ号" onmouseout="qqfun()">
-                    </div>
-                    <!--昵称-->
-                    <div class="am-form-group">
-                        <input id="commentator" type="text" class="am-form-field" placeholder="QQ昵称">
-                    </div>
-                    <!--邮箱-->
-                    <div class="am-form-group">
-                        <input id="email" type="text" class="am-form-field" placeholder="电子邮箱">
-                    </div>
-                </div>
-                <div>
-                    <!--网站地址-->
-                    <input type="text" name="websiteUrl" id="websiteUrl" style="width: 80%;" placeholder="你的网站地址(可不填)">
-                </div>
-                <!--评论-->
-                <div>
-                    <textarea rows="3" name="commentBody" id="commentBody" style="width: 80%;"
-                              placeholder="请输入您的评论"></textarea>
-                </div>
-                <div class="am-form-inline">
-                    <!--图片验证-->
-                    <input style="width:57%" type="text" name="verifyCode" id="verifyCode"
-                           placeholder="Verification Code">
-                    <img alt="单击图片刷新！" style="width:15%" class="pointer" th:src="@{/common/kaptcha}"
-                         onclick="this.src='/common/kaptcha?d='+new Date()*1">
+
+            </div>
+                <div style="width: 100%;text-align: center">
                     <!--提交-->
-                    <button id="commentSubmit" type="submit" class="submit am-btn am-btn-primary">提交</button>
+                    <button class="submit am-btn am-btn-primary" id="commentSubmit" style="width:200px" type="submit">提交</button>
                 </div>
             </div>
         </aside>
+        <style>
+            .verif-div{
+                width: 100%;
+            }
+            .verif-div img{
+                width: 100%;
+                height: 35px;
+                margin: 6px 0;
+                border: 1px solid #ccc;
+            }
+
+        </style>
     </th:block>
 </div>
 
@@ -196,9 +220,9 @@
             text: window.location.href,
             width: 128,
             height: 128,
-            colorDark : "#168f48",
-            colorLight : "#ffffff",
-            correctLevel : QRCode.CorrectLevel.H
+            colorDark: "#168f48",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
         });
     });
 </script>

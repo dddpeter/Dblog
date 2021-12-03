@@ -1,4 +1,4 @@
-package club.javafan.blog.web.controller.vo;
+package club.javafan.blog.web.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

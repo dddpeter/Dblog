@@ -1,0 +1,25 @@
+.json{
+    width: 100%;
+    max-height: 600px;
+    font-size:0.6rem;
+    overflow-y: scroll;
+}
+textarea.json:focus{
+    outline: none !important;
+    background-color: #fefffe;
+    border-color: #388E3C;
+    box-shadow: 0 0 10px #5eb95e;
+}
+#jsonTabContent,#xmlTabContent{
+
+}
+#jsonTabContent .json,#xmlTabContent .json{
+    min-height: 600px;
+}
+@media only screen and (max-width: 750px) {
+    #jsonTabContent .json,#xmlTabContent .json{
+        min-height: 200px;
+        max-height: 200px;
+        margin-bottom: 1rem;
+    }
+}

@@ -3582,10 +3582,8 @@
  textarea {
    width: 100%;
    border-radius: 2px;
-   border: 1px solid #bdc3c7;
    margin-top: 6px;
  }
- 
  @media only screen and (max-width: 1023px) {
    .am-u-sm-10 {
      display: none;
@@ -4609,7 +4607,7 @@ aside.create-comment {
 }
 aside.create-comment {
     padding-bottom: 15px;
-    background-color:#FFFFE0 ;
+    background-color:#FFF ;
     border: 1px dashed #C1C1C1;
     border-radius: 8px;
 }
@@ -4641,11 +4639,12 @@ aside.create-comment h2 {
     font-weight: normal;
     color: #388E3C;
     margin-bottom: 10px;
+    font-size: 14px;
 }
 
 aside.comments h2 i,
 aside.create-comment h2 i {
-    font-size: 36px;
+    font-size: 12px;
 }
 
 aside.comments .comment {

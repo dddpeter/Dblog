@@ -1,4 +1,4 @@
-package club.javafan.blog.web.controller.vo;
+package club.javafan.blog.web.vo;
 
 import java.util.Date;
 import java.util.List;

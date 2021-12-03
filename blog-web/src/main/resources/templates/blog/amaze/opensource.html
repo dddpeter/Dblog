@@ -1,38 +1,48 @@
 <!DOCTYPE html><!--suppress ALL-->
-<html  lang="zh-CN"  xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="blog/amaze/header::head-fragment">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
 </head>
 <!--BASE STYLE CSS-->
 <link rel="stylesheet" th:href="@{blog/amaze/css/opensource.css}" type="text/css" media="screen"/>
 
-<link rel="stylesheet" th:href="@{/admin/plugins/editormd/css/editormd.preview.css}"/>
+<link media="screen" rel="stylesheet" th:href="@{/admin/plugins/editormd/css/editormd.preview.css}" type="text/css"/>
+<link media="screen" rel="stylesheet" th:href="@{/blog/plugins/json-viewer/jquery.json-viewer.css}" type="text/css"/>
+<link href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/styles/default.min.css" rel="stylesheet">
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js"></script>
+
 <style>
-    #wrapper{
+    #wrapper {
         min-height: 60rem;
     }
-    #projects{
+
+    #projects {
         margin: 0 auto;
     }
+
     #projects a {
         display: block;
         padding: 0 10px 1rem 10px;
     }
+
     #projects a img {
         width: 100%;
     }
+
     @media only screen and (max-width: 640px) {
         #projects a {
             display: block;
             padding: 0 0.8rem 1rem 0.8rem;
         }
     }
+
     @media only screen and (min-width: 641px) {
         #projects a {
             display: block;
             padding: 0 4rem 1rem 4rem;
         }
     }
+
     @media only screen and (min-width: 1000px) {
         #projects a {
             display: block;
@@ -43,14 +53,61 @@
 <body>
 <div th:replace="blog/amaze/header::header-fragment"></div>
 
-<div class="container" style="position:relative;margin-top: 2rem;">
-    <div class="am-article" id="wrapper">
-        <div id="projects">
+<div class="container" style="position:relative;">
+    <div class="am-article" id="wrapper" style="padding-top: 2px">
+        <div id="vue">
+
+        </div>
+        <div class="am-tabs am-tabs-default"
+             data-am-tabs-noswipe="1"
+             data-am-widget="tabs">
+            <ul class="am-tabs-nav am-cf" id="ossTabs">
+                <li class="am-active" id="jsonTab">
+                    <a href="[data-tab-panel-0]">JSON格式化</a>
+                </li>
+                <li id="xmlTab"><a href="[data-tab-panel-2]">XML格式化</a></li>
+                <li id="ossTab"><a href="[data-tab-panel-1]">我的开源</a></li>
+            </ul>
+            <div class="am-tabs-bd" id="ossTabsContent">
+                <div class="am-tab-panel am-active" data-tab-panel-0 id="jsonTabContent">
+                    <div class="am-g">
+                        <div class="am-u-sm-12 am-u-md-6 am-u-lg-6 ">
+                            <form id="jsonFrom">
+                            <textarea class="json" id="textSourceJson" rows="200"></textarea>
+                            </form>
+                        </div>
+                        <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+                            <pre class="json"  id="textJson"></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-tab-panel " data-tab-panel-2 id="xmlTabContent">
+                    <div class="am-g">
+                        <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+                            <form id="xmlFrom">
+                                <textarea class="json" id="textSourceXml" rows="200"></textarea>
+                            </form>
+
+                        </div>
+                        <div class="am-u-sm-6">
+                            <pre class="json">
+                                <div id="textXml"></div>
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-tab-panel " data-tab-panel-1 id="ossTabContent">
+                    <div id="projects">
             <textarea style="display:none;">
 [![烈焰之雨/RainWeather](https://gitee.com/dddpeter/rainweather/widgets/widget_card.svg?colors=4183c4,ffffff,ffffff,e3e9ed,666666,9b9b9b)](https://gitee.com/dddpeter/rainweather)
 [![烈焰之雨/DBlog](https://gitee.com/dddpeter/DBlog/widgets/widget_card.svg?colors=4183c4,ffffff,ffffff,e3e9ed,666666,9b9b9b)](https://gitee.com/dddpeter/DBlog)
             </textarea>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
     </div>
 </div>
 <div th:replace="blog/amaze/to-top::to-top-fragment"></div>
@@ -70,11 +127,57 @@
 <script th:src="@{/admin/plugins/editormd/lib/sequence-diagram.min.js}"></script>
 <script th:src="@{/admin/plugins/editormd/lib/flowchart.min.js}"></script>
 <script th:src="@{/admin/plugins/editormd/lib/jquery.flowchart.min.js}"></script>
-
-
+<script th:src="@{/blog/plugins/json-viewer/jquery.json-viewer.js}"></script>
+<script th:src="@{/blog/plugins/xml-formatter.js}"></script>
 
 <script type="text/javascript">
+    var xmlFormatter = require('xml-formatter');
+    var vm = new Vue({
+        el: '#vue',
+        data: {
+            news: []
+        },
+        method: {}
+    })
+    function deserialize(serializedJavascript){
+        return eval('(' + serializedJavascript + ')');
+    }
     $(function () {
+        function getUrlParam(key) {
+           var url =  window.location.href;
+            var urlArr = url.split('?')
+            if(urlArr.length < 2 ){
+                return null;
+            }
+            var params = urlArr[1].split('&');
+            for(var i =0; i < params.length; i++){
+               var pars = params[i].split('=');
+               var name, val;
+               name = pars[0];
+               if(pars.length > 1){
+                   val = pars[1];
+               }
+               if(name === key){
+                   return val;
+               }
+            }
+            return null;
+        }
+        //
+        var tab = getUrlParam('tab') || 'jsonTab'
+        $('#ossTabs').children().each(function(i,child){
+            var o = $(child);
+            if(child.id == tab){
+                o.addClass('am-active')
+                console.log(o)
+                $("#"+child.id + "Content").addClass("am-active")
+            }
+            else{
+                o.removeClass('am-active')
+                $("#"+child.id + "Content").removeClass("am-active")
+            }
+        })
+
         var mdPreview;
         mdPreview = editormd.markdownToHTML("projects", {
             htmlDecode: "style,script,iframe,a,img,center",
@@ -85,7 +188,67 @@
             sequenceDiagram: true,  // 默认不解析
             previewCodeHighlight: true
         });
+
+        $('#ossTabs').on('click', 'li', function (e) {
+            var id = e.target.id || e.target.parentElement.id
+            var url = '/opensource';
+            var newUrl = url +'?tab=' + id;
+            history.pushState('', '', newUrl);
+        })
+
+        function renderJson() {
+            try {
+                var text = $('#textSourceJson').val()
+                if (text == undefined || text == '') {
+                    return
+                }
+                var input = eval('(' + text + ')');
+
+            } catch (error) {
+                console.log(error)
+            }
+            var options = {
+                collapsed: false,
+                rootCollapsable: false,
+                withQuotes: true,
+                withLinks: true
+            };
+
+            $('#textJson').jsonViewer(input, options);
+        }
+
+        function renderXml() {
+            try {
+                var text = $('#textSourceXml').val()
+                var input = text;
+                if (input == undefined || input == '') {
+                    return
+                }
+                var formattedXml = xmlFormatter(input, {
+                    indentation: '  ',
+                    filter: (node) => node.type !== 'Comment',
+                    collapseContent: true,
+                    lineSeparator: '\n'
+                });
+                var htmlXml = hljs.highlight(formattedXml, {language: 'xml'}).value
+                $('#textXml').html(htmlXml);
+            } catch (error) {
+                console.log(error)
+            }
+
+        }
+
+        // Json
+        $('#textSourceJson').change(renderJson);
+        $('#textSourceJson').on('input', renderJson);
+        renderJson();
+        // Xml
+        $('#textSourceXml').change(renderXml);
+        $('#textSourceXml').on('input', renderXml);
+        renderXml();
+
     });
+
 </script>
 
 </html>

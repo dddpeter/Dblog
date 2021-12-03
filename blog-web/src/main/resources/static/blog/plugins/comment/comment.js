@@ -1,3 +1,24 @@
+$(function () {
+        var qq = localStorage.getItem("qq");
+        var email = localStorage.getItem("email");
+        var nickName = localStorage.getItem("commentator");
+        var headImage = localStorage.getItem("headImage");
+        if (qq) {
+            $('#qqNum').val(qq);
+        }
+        if (email) {
+            $('#email').val(email)
+        }
+        if (nickName) {
+            $('#commentator').val(nickName)
+        }
+        if (headImage) {
+            $('#idPic').attr("src", headImage)
+        }
+
+    }
+);
+
 function qqfun(){
     var qNumber = $('#qqNum').val();
     if (qNumber) {
@@ -11,6 +32,10 @@ function qqfun(){
                     $('#email').val(res.qemail)
                     $('#commentator').val(res.nickName)
                     $('#idPic').attr("src", res.headImage)
+                    localStorage.setItem("qq",qNumber)
+                    localStorage.setItem("email",res.qemail)
+                    localStorage.setItem("commentator",res.nickName)
+                    localStorage.setItem("headImage",res.headImage)
                 }
             }
         })

@@ -68,7 +68,7 @@ public class MyBlogController {
      */
     @GetMapping({"/", "/index", "index.html"})
     public ModelAndView index(HttpServletRequest request) throws Exception {
-        return this.page(1, 15);
+        return this.page(1, 20);
     }
     /**
      * 首页 分页数据

@@ -1,5 +1,6 @@
-package club.javafan.blog.web.filter;
+package club.javafan.blog.configs;
 
+import club.javafan.blog.web.filter.AdminLoginInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,7 +32,7 @@ public class FilterConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // 路径映射
         String path = System.getProperty("user.dir").replaceAll("\\\\", "/") + FILE_PATH;
-        log.warn("static served on: {}",path);
+        log.info("static served on: {}",path);
         registry.addResourceHandler("/upload/**")
                 .addResourceLocations("file:" + path)
                 .setCacheControl(CacheControl.maxAge(1, TimeUnit.HOURS))
