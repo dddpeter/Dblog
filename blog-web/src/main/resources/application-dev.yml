@@ -91,3 +91,25 @@ baidu:
   appSecret: TTWXOxGSaUW2Griq769gVGK4fbxGlUsS
 server:
   port: 8100
+jetcache:
+  statIntervalMinutes: 15
+  local:
+    default:
+      type: caffeine
+      keyConvertor: fastjson
+      limit: 100
+  remote:
+    default:
+      type: redis.lettuce
+      keyConvertor: fastjson
+      valueEncoder: java
+      valueDecoder: java
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+      uri: redis://${spring.redis.host}:${spring.redis.port}
+      host: ${spring.redis.host}
+      port: ${spring.redis.port}
+      database: ${spring.redis.database}
+

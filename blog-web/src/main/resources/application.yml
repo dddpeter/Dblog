@@ -62,8 +62,3 @@ guava:
 mybatis-plus:
   type-aliases-package: club.javafan.blog.domain
   mapper-locations: classpath*:mapper/*.xml
-forest:
-  converters:
-      parameters:
-        # JSON数据转换器的全局日期格式化配置
-        dateFormat: yyyy-MM-dd hh:mm:ss

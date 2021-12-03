@@ -1600,15 +1600,15 @@ code {
 /* Code block */
 pre {
   display: block;
-  padding: 1rem;
-  margin: 1rem  0;
+  padding: 0.3rem;
+  margin: 0  0;
   font-size: 1.3rem;
   line-height: 1.6;
   word-break: break-all;
   word-wrap: break-word;
   color: #555555;
   background-color: #f8f8f8;
-  border: 1px solid #dedede;
+  border: 1px solid #5eb95e;
   border-radius: 0;
 }
 pre code {
@@ -14366,7 +14366,7 @@ tbody.am-collapse.am-in {
   line-height: 42px;
 }
 .am-tabs-default .am-tabs-nav > .am-active a {
-  background-color: #0e90d2;
+  background-color: #1aaa55;
   color: #fff;
 }
 /**
