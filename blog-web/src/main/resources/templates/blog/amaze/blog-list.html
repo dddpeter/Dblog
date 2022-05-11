@@ -43,14 +43,20 @@
                                 </li>
                                 <li>
                                     <div class="clearfix">
-                                        <div class=" am-u-sm-12  am-u-md-6 blogtags">
+                                        <div class=" am-u-sm-12  am-u-md-2 blogtags">
                                             <span style="color: rgba(0,0,0,.45);font-size: 12px">分类：</span>
                                             <a class="am-badge am-badge-success am-round"
-                                               th:href="@{'/category/' + ${blog.blogCategoryName}}"
+                                               th:href="@{'/blog/' + ${blog.blogId}}"
                                                th:text="${blog.blogCategoryName!=null? blog.blogCategoryName:'未设置'}"></a>
                                         </div>
+                                        <div class=" am-u-sm-12  am-u-md-2 blogtags">
+                                            <span style="color: rgba(0,0,0,.45);font-size: 12px">浏览量：</span>
+                                            <a class="am-badge am-badge-primary am-round"
+                                               th:href="@{'/category/' + ${blog.blogCategoryName}}"
+                                               th:text="${blog.visitCount!=null? blog.visitCount:0}"></a>
+                                        </div>
                                         <div th:text="${#dates.format(blog.createTime, 'yyyy年MM月dd日 HH:mm:SS')}"
-                                             class="am-u-sm-12  am-u-md-6 blog-created-dates time"> </div>
+                                             class="am-u-sm-12  am-u-md-8 blog-created-dates time"> </div>
                                     </div>
                                 </li>
                             </ul>

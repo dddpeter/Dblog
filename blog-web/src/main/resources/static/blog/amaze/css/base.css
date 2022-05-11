@@ -3844,7 +3844,7 @@
    }
 
      .title-link{
-         color: #333;
+         color: #0e90d2;
      }
      .blog-created-dates{
          text-align: left;
@@ -3875,7 +3875,7 @@
          text-overflow: ellipsis;
          display: block;
          width: 100%;
-         color: #333;
+         color: #0e90d2;
          height: 25px
      }
      .blog-created-dates{
@@ -4466,7 +4466,7 @@
  
  .articles-list, .links-list, .post-list, .category-list, .archives-articles, .tag-articles, .tags-list {
    min-height: 400px;
-   padding: 0 8px;
+  /* padding: 0 8px;*/
  }
  .tags-list .tags a:hover {
    color: #0085a1 !important;

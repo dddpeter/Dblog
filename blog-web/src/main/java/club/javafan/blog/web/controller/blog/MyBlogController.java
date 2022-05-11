@@ -45,8 +45,6 @@ public class MyBlogController {
     @Resource
     private TagService tagService;
     @Resource
-    private LinkService linkService;
-    @Resource
     private CommentService commentService;
     @Resource
     private ConfigService configService;
@@ -56,20 +54,20 @@ public class MyBlogController {
     private QQUserInfo qqUserInfo;
     @Resource
     private Cache<String,Object> guavaCache;
-    @Autowired
-    private RedisUtil redisUtil;
+    private final Long EXPIRE_TIME = 60 * 60 * 24L;
     @Resource
     AipContentCensorBuilder aipContentCensorBuilder;
-    private Long EXPIRE_TIME = 60 * 60 * 24L;
+    @Resource
+    private RedisUtil redisUtil;
     /**
      * 首页
      *
-     * @return
      */
     @GetMapping({"/", "/index", "index.html"})
     public ModelAndView index(HttpServletRequest request) throws Exception {
         return this.page(1, 20);
     }
+
     /**
      * 首页 分页数据
      *
@@ -92,6 +90,7 @@ public class MyBlogController {
         modelAndView.addObject("pageName", "首页");
         modelAndView.addObject("rss",blogService.getRss());
         modelAndView.addObject("configurations", configService.getAllConfigs());
+
         return modelAndView;
     }
 
@@ -105,6 +104,7 @@ public class MyBlogController {
         redisUtil.incr(BLOG_INDEX_VIEW + getToday());
         redisUtil.incr(BLOG_INDEX_VIEW_ALL);
     }
+
 
     /**
      * Categories页面(包括分类数据和标签数据)
@@ -298,24 +298,24 @@ public class MyBlogController {
                                   @RequestParam String email, @RequestParam String qNumber,
                                   @RequestParam String nickName, @RequestParam String headImg,
                                   @RequestParam String websiteUrl, @RequestParam String commentBody) {
-        if (StringUtils.isEmpty(verifyCode)) {
+        if (StringUtils.hasText(verifyCode)) {
             return ResponseResult.failResult("验证码不能为空");
         }
         String kaptchaCode = session.getAttribute("verifyCode") + "";
-        if (StringUtils.isEmpty(kaptchaCode)) {
+        if (StringUtils.hasText(kaptchaCode)) {
             return ResponseResult.failResult("非法请求");
         }
         if (!verifyCode.equals(kaptchaCode)) {
             return ResponseResult.failResult("验证码错误");
         }
         String ref = request.getHeader("Referer");
-        if (StringUtils.isEmpty(ref)) {
+        if (StringUtils.hasText(ref)) {
             return ResponseResult.failResult("非法请求");
         }
         if (null == blogId || blogId < 0) {
             return ResponseResult.failResult("非法请求");
         }
-        if (StringUtils.isEmpty(email)) {
+        if (StringUtils.hasText(email)) {
             return ResponseResult.failResult("请输入邮箱地址");
         }
         if (!PatternUtil.isEmail(email)) {
@@ -330,7 +330,7 @@ public class MyBlogController {
         if (headImg.trim().length() > 200 || !PatternUtil.isURL(headImg)) {
             return ResponseResult.failResult("头像非法");
         }
-        if (StringUtils.isEmpty(commentBody)) {
+        if (StringUtils.hasText(commentBody)) {
             return ResponseResult.failResult("请输入评论内容");
         }
         if (commentBody.trim().length() > 200) {

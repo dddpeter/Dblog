@@ -43,7 +43,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static club.javafan.blog.common.constant.CacheConstant.BLOG_DETAIL;
-import static club.javafan.blog.common.constant.RedisKeyConstant.BLOG_VIEW_ZSET;
+import static club.javafan.blog.common.constant.RedisKeyConstant.*;
 import static org.apache.commons.collections4.CollectionUtils.isEmpty;
 import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
@@ -75,6 +75,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Resource
     private Cache<String,Object> guavaCache;
+
 
     @Transactional(rollbackFor = Exception.class)
     @Override
@@ -276,6 +277,7 @@ public class BlogServiceImpl implements BlogService {
         pageUtil.put("blogStatus", INTEGER_ONE);
         List<Blog> blogList = blogMapper.findBlogList(pageUtil);
         int totalBlogs = blogMapper.getTotalBlogs(pageUtil);
+
         return getPageResult(pageUtil, blogList, totalBlogs);
     }
 
@@ -475,6 +477,9 @@ public class BlogServiceImpl implements BlogService {
                 }
                 blogListVO.setAbstractContent(abC);
                 boolean b = finalBlogCategoryMap.containsKey(blog.getBlogCategoryId());
+                String blogKey = BLOG_PAGE_VIEW + blog.getBlogId();
+                String count = "" +  (redisUtil.get(blogKey)==null? 0 : redisUtil.get(blogKey));
+                blogListVO.setVisitCount(Long.parseLong(count));
                 if (b) {
                     String s = finalBlogCategoryMap.get(blog.getBlogCategoryId());
                     blogListVO.setBlogCategoryIcon(s);

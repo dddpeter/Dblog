@@ -41,7 +41,7 @@ spring:
     # Redis服务器连接端口
     port: 6379
     # Redis服务器连接密码（默认为空）如果没有配置密码就不要写这个属性了
-    # password: hqins@66
+    password: test1234
     #连接池
     lettuce:
       pool:
@@ -108,8 +108,9 @@ jetcache:
         minIdle: 5
         maxIdle: 20
         maxTotal: 50
-      uri: redis://${spring.redis.host}:${spring.redis.port}
+      uri: redis://${spring.redis.password}@${spring.redis.host}:${spring.redis.port}
       host: ${spring.redis.host}
       port: ${spring.redis.port}
       database: ${spring.redis.database}
+      password: ${spring.redis.password}
 

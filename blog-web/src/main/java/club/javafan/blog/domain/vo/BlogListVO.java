@@ -26,6 +26,8 @@ public class BlogListVO implements Serializable {
 
     private String blogCategoryName;
 
+    private Long visitCount;
+
     private Date createTime;
 
     private String abstractContent;
