@@ -579,10 +579,15 @@ ul{
     font-size: 12px;
 }
 .person-logo{
-    padding:0 20%;
+    padding:5px 10px;
     background-color: #FFF;
+    margin: 0 auto;
 }
 .person-logo img{
+    width: 100%;
+}
+.person-logo iframe{
+    height: 350px;
     width: 100%;
 }
 /*#socialIconsDiv{

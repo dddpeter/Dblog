@@ -87,7 +87,6 @@ logging:
     #设置项目的日志打印级别 map类型 root为全路径  后面为级别
     root: info
     club.javafan.blog: debug
-    org.springframework.web: debug
 baidu:
   appId: 23916718
   appKey: GeKMqkqPdxpfnktWML8cIQOA

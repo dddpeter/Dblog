@@ -1,10 +1,25 @@
 <!DOCTYPE html><!--suppress ALL-->
 <html  lang="zh-CN"  xmlns:th="http://www.thymeleaf.org">
+
 <div th:fragment="blog-list-fragment" class="am-u-lg-8 am-u-sm-12  main-content">
 
     <main class="articles-list" id="main">
         <div class="person-logo">
-            <img th:src="@{/blog/amaze/images/website.png}">
+           <!-- <img th:src="@{/blog/amaze/images/website.png}">-->
+            <!--src="https://hex.frvr.com/alc/"-->
+            <iframe id="gameMobile" src="https://lines.frvr.com/"></iframe>
+            <iframe id="game" src="https://hex.frvr.com/alc/"></iframe>
+            <script>
+                let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+                if (isMobile)  {
+                    $("#game").hide();
+                    $("#gameMobile").show();
+                }
+                else{
+                    $("#gameMobile").hide();
+                    $("#game").show();
+                }
+            </script>
         </div>
         <div>
             <th:block th:if="${!(null != blogPageResult && blogPageResult.list.size()> 0)}">
@@ -98,4 +113,5 @@
         </div>
     </main>
 </div>
+
 </html>
