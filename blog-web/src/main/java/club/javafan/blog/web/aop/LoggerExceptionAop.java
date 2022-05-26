@@ -2,8 +2,9 @@ package club.javafan.blog.web.aop;
 
 import club.javafan.blog.common.mail.MailService;
 import club.javafan.blog.common.util.RedisUtil;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -14,8 +15,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -44,6 +48,9 @@ public class LoggerExceptionAop {
      */
     @Autowired
     private MailService mailService;
+    @Resource
+    ObjectMapper objectMapper;
+
     /**
      * 日志
      */
@@ -62,6 +69,10 @@ public class LoggerExceptionAop {
      */
     @Value("#{'${spring.mail.cc}'.split(',')}")
     private String[] cc;
+    @PostConstruct
+    public void init(){
+        objectMapper.configure(SerializationFeature.FAIL_ON_SELF_REFERENCES, false);
+    }
 
     @Pointcut(value = "execution(public * club.javafan.blog.service.impl.*.*(..))")
     private void servicePointCut() {
@@ -102,10 +113,15 @@ public class LoggerExceptionAop {
         //过滤掉request请求和response 避免异步请求出错,同时过滤MultipartFile
         List<Object> logArgs = Stream.of(args)
                 .filter(arg -> (!(arg instanceof HttpServletRequest) && !(arg instanceof HttpServletResponse))
-                        && !(arg instanceof MultipartFile))
+                        && !(arg instanceof MultipartFile) && !(arg instanceof HttpSession))
                 .collect(Collectors.toList());
 
-        log.append(JSONObject.toJSONString(logArgs, SerializerFeature.IgnoreNonFieldGetter));
+        try {
+            log.append(objectMapper.writeValueAsString(logArgs));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            logger.warn("+++++++++++++++++++" + e);
+        }
         return log.toString();
     }
 
@@ -114,7 +130,11 @@ public class LoggerExceptionAop {
         if (isNull(returnObj)) {
             return;
         }
-        logger.debug("club.javafan.blog return result: {}", JSONObject.toJSONString(returnObj));
+        try {
+            logger.debug("club.javafan.blog return result: {}", objectMapper.writeValueAsString(returnObj));
+        } catch (JsonProcessingException e) {
+            logger.warn(String.valueOf(e));
+        }
     }
 
     @AfterThrowing(value = "controllerPoint()||servicePointCut()||commonPointCut()||workerPointCut()", throwing = "e")
@@ -123,7 +143,13 @@ public class LoggerExceptionAop {
         recordTodayCount(EXCEPTION_AMOUNT);
         logger.error("club.javafan.blog error : {}", e);
         //发送报错邮件
-        mailService.sendSimpleMail(mailTo, "Warning,您的博客出现了异常！", JSONObject.toJSONString(e), cc);
+        String exception = e.getMessage();
+        try {
+            exception = objectMapper.writeValueAsString(e);
+        } catch (JsonProcessingException ex) {
+            throw new RuntimeException(ex);
+        }
+        mailService.sendSimpleMail(mailTo, "Warning,您的博客出现了异常！", exception , cc);
     }
 
     /**

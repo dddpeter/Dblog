@@ -1,12 +1,15 @@
-
+springdoc:
+  api-docs:
+     path: /api-docs
+  show-actuator: true
 spring:
   #设置redis
   #设置连接池
   datasource:
     #配置多数据源 下面是我本地的数据url
     slave:
-      jdbc-url: jdbc:mysql://localhost:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC
-      username: app
+      jdbc-url: jdbc:mysql://localhost:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
       password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.zaxxer.hikari.HikariDataSource
@@ -19,8 +22,8 @@ spring:
         maximum-pool-size: 15
         connection-test-query: SELECT 1
     master:
-      jdbc-url: jdbc:mysql://localhost:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC
-      username: app
+      jdbc-url: jdbc:mysql://localhost:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
       password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.zaxxer.hikari.HikariDataSource

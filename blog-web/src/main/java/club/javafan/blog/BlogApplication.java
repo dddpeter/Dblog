@@ -9,7 +9,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import java.util.TimeZone;
 
-@SpringBootApplication(scanBasePackages={"club.javafan","com.github.xiaoymin"})
+@SpringBootApplication(scanBasePackages={"club.javafan"})
 @MapperScan( basePackages = {"club.javafan.blog.repository"})
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @EnableMethodCache(basePackages="club.javafan")

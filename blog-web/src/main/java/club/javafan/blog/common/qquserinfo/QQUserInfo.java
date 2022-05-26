@@ -2,8 +2,8 @@ package club.javafan.blog.common.qquserinfo;
 
 
 import club.javafan.blog.domain.vo.QQUserInfoVO;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -13,6 +13,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Objects;
 
 /**
@@ -25,6 +26,8 @@ public class QQUserInfo {
      * 请求前缀
      */
     private static final String REQUEST_URL = "https://r.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?uins=";
+    @Resource
+    ObjectMapper objectMapper;
 
     /**
      * 获取qq的个人信息
@@ -48,13 +51,10 @@ public class QQUserInfo {
                 int from = userData.indexOf("(");
                 int to = userData.lastIndexOf(")");
                 String json = userData.substring(from + 1, to);
-                JSONArray jsonArray = JSONObject.parseObject(json).getJSONArray(qq);
-                if (jsonArray.isEmpty()) {
-                    return null;
-                }
-                String headUrl = (String) jsonArray.get(0);
+                JsonNode qqJsonNode = objectMapper.readTree(json).get(qq);
+                String headUrl =  qqJsonNode.get(0).textValue();
                 qqUserInfoVO.setHeadImage(headUrl);
-                qqUserInfoVO.setNickName((String) jsonArray.get(6));
+                qqUserInfoVO.setNickName(qqJsonNode.get(6).textValue());
                 qqUserInfoVO.setQNumber(qq);
                 qqUserInfoVO.setQEmail(qq + "@qq.com");
                 return qqUserInfoVO;

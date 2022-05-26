@@ -14,7 +14,6 @@ import club.javafan.blog.domain.vo.SimpleBlogListVO;
 import club.javafan.blog.service.*;
 import com.google.common.cache.Cache;
 import org.apache.commons.lang3.math.NumberUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -360,7 +359,7 @@ public class MyBlogController {
      *
      * @return
      */
-    @GetMapping({"/{subUrl:^.*(?!doc/.html)}"})
+    @GetMapping("/{subUrl}")
     public ModelAndView detail(@PathVariable("subUrl") String subUrl) throws Exception {
         ModelAndView modelAndView = new ModelAndView("blog/amaze/detail");
         BlogDetailVO blogDetailVO = blogService.getBlogDetailBySubUrl(subUrl);
