@@ -3759,6 +3759,11 @@
     color: #1aaa55;
 }
 
+.blog-list-li{
+    background-color: #fff;
+    background-image: url("/blog/amaze/images/code-bg.png");
+}
+
 .blog-time-year{
    height: 20px;
     background-color: #FF9800;
@@ -3867,6 +3872,7 @@
      .blog-list-title{
          padding: 16px 16px 0 16px!important;
          height: 86px;
+         background-image: url("/blog/amaze/images/code-bg.png");
      }
 
      .title-link{

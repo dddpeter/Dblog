@@ -28,7 +28,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation 'net.sourceforge.nekohtml:nekohtml:1.9.22'
-    implementation 'org.springframework.boot:spring-boot-starter-jetty'
+    implementation 'org.springframework.boot:spring-boot-starter-undertow'
+    implementation 'org.springframework:spring-context-indexer'
     implementation 'mysql:mysql-connector-java:8.0.29'
     implementation 'org.springframework.boot:spring-boot'
     implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.1'

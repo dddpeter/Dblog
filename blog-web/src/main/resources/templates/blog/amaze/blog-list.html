@@ -5,8 +5,9 @@
 
     <main class="articles-list" id="main">
         <div class="person-logo">
+            <img th:src="@{/blog/amaze/images/bg.jpg}">
            <!-- <img th:src="@{/blog/amaze/images/website.png}">-->
-            <!--src="https://hex.frvr.com/alc/"-->
+           <!-- &lt;!&ndash;src="https://hex.frvr.com/alc/"&ndash;&gt;
             <iframe id="gameMobile" src="https://lines.frvr.com/"></iframe>
             <iframe id="game" src="https://hex.frvr.com/alc/"></iframe>
             <script>
@@ -19,7 +20,7 @@
                     $("#gameMobile").hide();
                     $("#game").show();
                 }
-            </script>
+            </script>-->
         </div>
         <div>
             <th:block th:if="${!(null != blogPageResult && blogPageResult.list.size()> 0)}">

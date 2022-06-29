@@ -531,7 +531,8 @@ ul{
 }
 .wechat-img img{
     width: 200px;
-    height: 263px;
+    height: 200px;
+    margin-bottom: 25px;
 }
 
 .concat{
