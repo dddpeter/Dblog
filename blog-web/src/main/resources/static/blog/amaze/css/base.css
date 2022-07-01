@@ -1811,8 +1811,12 @@
  }
  .am-article{
      background-color: #fff;
+     background-image: url("/blog/amaze/images/code-bg.png");
      padding-top:2em;
  }
+.editormd-preview-container, .editormd-html-preview{
+    background-image: url("/blog/amaze/images/code-bg.png");
+}
  /* ==========================================================================
      Component: Comment
    ============================================================================ */
@@ -4610,6 +4614,7 @@ aside.comments,
 aside.create-comment {
     margin-bottom: 15px;
     padding-top: 15px;
+    background-image: url("/blog/amaze/images/code-bg.png");
 }
 aside.create-comment {
     padding-bottom: 15px;

@@ -1,5 +1,4 @@
 spring:
-  #设置redis
   #设置连接池
   datasource:
     #配置多数据源 下面是我本地的数据url
@@ -73,6 +72,11 @@ spring:
       mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
       mail.smtp.socketFactory.fallback: false
       mail.smtp.socketFactory.port: 465
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          max-age: 30d
 jetcache:
   statIntervalMinutes: 15
   local:
