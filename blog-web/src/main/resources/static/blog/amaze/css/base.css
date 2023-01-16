@@ -1927,8 +1927,18 @@
  .am-comment-bd {
    padding: 15px;
    overflow: hidden;
-     background-color: #FFFFE0;
+     background-color: #FFF;
+     background-image: url("/blog/amaze/images/code-bg.png");
  }
+
+#commentFormWrapper{
+    background-color: #FFF;
+    background-image: url("/blog/amaze/images/code-bg.png");
+    border-radius: 5px 5px;
+    border: 1px dashed #C1C1C1;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
  
  .am-comment-bd> :last-child {
    margin-bottom: 0;

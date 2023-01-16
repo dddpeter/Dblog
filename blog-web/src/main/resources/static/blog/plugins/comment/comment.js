@@ -31,7 +31,7 @@ function qqfun(){
                     console.log(res)
                     $('#email').val(res.qemail)
                     $('#commentator').val(res.nickName)
-                    $('#idPic').attr("src", res.headImage)
+                    $('#idPic').attr("src", res.headImage + "&t=" + (new Date()).valueOf())
                     localStorage.setItem("qq",qNumber)
                     localStorage.setItem("email",res.qemail)
                     localStorage.setItem("commentator",res.nickName)

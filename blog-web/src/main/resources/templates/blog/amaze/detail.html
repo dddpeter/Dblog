@@ -57,7 +57,7 @@
                     <li class="am-comment">
                         <article class="am-comment">
                             <a href="#link-to-user-home">
-                                <img th:src="${comment.headImage}" alt="" class="am-comment-avatar" width="48"
+                                <img th:src="${comment.headImage+ '&t=' + timestamp } " alt="" class="am-comment-avatar" width="48"
                                      height="48"/>
                             </a>
                             <div class="am-comment-main">
@@ -115,7 +115,7 @@
                 <h2><i class="fa fa-pencil fa-lg" style="font-size: 1.7em"></i> 添加评论</h2>
                 <input type="hidden" id="blogId" name="blogId" th:value="${blogDetailVO.blogId}"></input>
                 <div class="am-g" style="padding: 6px">
-                    <div class="am-u-sm-12 am-u-md-4 am-u-lg-4" style="background-color: #FFFFE0;border-radius: 5px 5px;border: 1px dashed #C1C1C1;padding-bottom: 8px;padding-top: 8px;">
+                    <div class="am-u-sm-12 am-u-md-4 am-u-lg-4" id="commentFormWrapper" style="">
                         <!--横向表单-->
                         <div class="am-form" role="form">
                             <!--头像-->
@@ -137,11 +137,11 @@
                                 <input class="am-form-field" id="email" placeholder="电子邮箱" type="text">
                             </div>
                         </div>
-                      <!--  <div>
-                            &lt;!&ndash;网站地址&ndash;&gt;
+                        <div style="display: none">
+                            <!--网站地址-->
                             <input id="websiteUrl" name="websiteUrl" placeholder="你的网站地址(可不填)"
                                    type="text">
-                        </div>-->
+                        </div>
                     </div>
                     <div class="am-u-sm-12 am-u-md-8 am-u-lg-8 am-form">
                         <!--评论-->

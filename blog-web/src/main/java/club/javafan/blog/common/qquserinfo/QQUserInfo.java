@@ -52,8 +52,9 @@ public class QQUserInfo {
                 int to = userData.lastIndexOf(")");
                 String json = userData.substring(from + 1, to);
                 JsonNode qqJsonNode = objectMapper.readTree(json).get(qq);
-                String headUrl =  qqJsonNode.get(0).textValue();
-                qqUserInfoVO.setHeadImage(headUrl);
+                //String headUrl =  qqJsonNode.get(0).textValue();
+                // https://q.qlogo.cn/g?b=qq&nk=11111&s=100
+                qqUserInfoVO.setHeadImage("https://q.qlogo.cn/g?b=qq&nk="+qq+"&s=100");
                 qqUserInfoVO.setNickName(qqJsonNode.get(6).textValue());
                 qqUserInfoVO.setQNumber(qq);
                 qqUserInfoVO.setQEmail(qq + "@qq.com");

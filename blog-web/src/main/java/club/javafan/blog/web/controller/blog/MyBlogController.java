@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -174,6 +175,7 @@ public class MyBlogController {
         modelAndView.addObject("categories", categoryService.getAllCategories());
         modelAndView.addObject("pageName", "详情");
         modelAndView.addObject("configurations", configService.getAllConfigs());
+        modelAndView.addObject("timestamp", System.currentTimeMillis());
         return modelAndView;
     }
 
@@ -297,24 +299,24 @@ public class MyBlogController {
                                   @RequestParam String email, @RequestParam String qNumber,
                                   @RequestParam String nickName, @RequestParam String headImg,
                                   @RequestParam String websiteUrl, @RequestParam String commentBody) {
-        if (StringUtils.hasText(verifyCode)) {
+        if (!StringUtils.hasText(verifyCode)) {
             return ResponseResult.failResult("验证码不能为空");
         }
         String kaptchaCode = session.getAttribute("verifyCode") + "";
-        if (StringUtils.hasText(kaptchaCode)) {
+        if (!StringUtils.hasText(kaptchaCode)) {
             return ResponseResult.failResult("非法请求");
         }
         if (!verifyCode.equals(kaptchaCode)) {
             return ResponseResult.failResult("验证码错误");
         }
         String ref = request.getHeader("Referer");
-        if (StringUtils.hasText(ref)) {
+        if (!StringUtils.hasText(ref)) {
             return ResponseResult.failResult("非法请求");
         }
         if (null == blogId || blogId < 0) {
             return ResponseResult.failResult("非法请求");
         }
-        if (StringUtils.hasText(email)) {
+        if (!StringUtils.hasText(email)) {
             return ResponseResult.failResult("请输入邮箱地址");
         }
         if (!PatternUtil.isEmail(email)) {
@@ -329,7 +331,7 @@ public class MyBlogController {
         if (headImg.trim().length() > 200 || !PatternUtil.isURL(headImg)) {
             return ResponseResult.failResult("头像非法");
         }
-        if (StringUtils.hasText(commentBody)) {
+        if (!StringUtils.hasText(commentBody)) {
             return ResponseResult.failResult("请输入评论内容");
         }
         if (commentBody.trim().length() > 200) {
