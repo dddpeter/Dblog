@@ -22,6 +22,9 @@ dependencyManagement {
 }
 dependencies {
     implementation 'com.github.penggle:kaptcha:2.3.2'
+    implementation 'com.maxmind.geoip2:geoip2:4.0.1'
+    implementation 'org.apache.commons:commons-compress:1.23.0'
+    implementation 'cn.hutool:hutool-all:5.8.18'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.apache.commons:commons-collections4:4.4'
@@ -36,7 +39,7 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.8'
     implementation 'org.springdoc:springdoc-openapi-webmvc-core:1.6.8'
     implementation 'dom4j:dom4j:1.6.1'
-    implementation 'com.thoughtworks.xstream:xstream:1.4.19'
+    implementation 'com.thoughtworks.xstream:xstream:1.4.20'
     implementation 'com.alibaba:fastjson:2.0.4'
     implementation('com.baidu.aip:java-sdk:4.16.7')
             {
@@ -55,7 +58,7 @@ dependencies {
     implementation group: 'com.vladsch.flexmark', name: 'flexmark', version: '0.62.2'
     implementation group: 'com.vladsch.flexmark', name: 'flexmark-util', version: '0.62.2'
     implementation group: 'com.vladsch.flexmark', name: 'flexmark-ext-tables', version: '0.62.2'
-    implementation group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
+    implementation group: 'org.jsoup', name: 'jsoup', version: '1.15.3'
     implementation group: 'com.rometools', name: 'rome', version: '1.16.0'
     implementation 'org.projectlombok:lombok:1.18.24'
     implementation 'org.hibernate.validator:hibernate-validator:7.0.4.Final'

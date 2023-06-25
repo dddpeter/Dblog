@@ -140,11 +140,11 @@ public class MyBlogController {
         Object blog = guavaCache.getIfPresent(BLOG_DETAIL + blogId);
         //设置兜底值
         modelAndView.addObject("commentTotal", 0);
+        //增加博客的浏览量
+        Long incr = addBlogView(blogId);
         if (nonNull(blog)){
             //增加浏览量
             BlogDetailVO blogDetailVO = (BlogDetailVO) blog;
-            //增加博客的浏览量
-            Long incr = addBlogView(blogId);
             blogDetailVO.setBlogViews(incr);
             modelAndView.addObject("blogDetailVO", blog);
             PageResult commentPageByBlogIdAndPageNum = commentService.getCommentPageByBlogIdAndPageNum(blogId, commentPage);
@@ -156,8 +156,6 @@ public class MyBlogController {
         if (isNull(blog)){
             BlogDetailVO blogDetailVO = blogService.getBlogDetail(blogId);
             if (nonNull(blogDetailVO)){
-                //增加博客的浏览量
-                Long incr = addBlogView(blogId);
                 blogDetailVO.setBlogViews(incr);
                 modelAndView.addObject("blogDetailVO", blogDetailVO);
                 PageResult commentPageByBlogIdAndPageNum = commentService.getCommentPageByBlogIdAndPageNum(blogId, commentPage);

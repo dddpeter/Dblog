@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,9 +20,8 @@ import static java.util.Objects.isNull;
 
 
 @Component
-public class
-AdminLoginInterceptor implements HandlerInterceptor {
-    @Autowired
+public class AdminLoginInterceptor implements HandlerInterceptor {
+    @Resource
     private RedisUtil redisUtil;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {

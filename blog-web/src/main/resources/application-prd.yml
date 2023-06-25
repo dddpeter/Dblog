@@ -102,6 +102,9 @@ jetcache:
 #文件上传路径
 file:
   file-path: /opt/deploy/upload/
+  geoip2:
+    download-url: https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=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&suffix=tar.gz
+    store-path: /opt
 logging:
   level:
     #设置项目的日志打印级别 map类型 root为全路径  后面为级别
